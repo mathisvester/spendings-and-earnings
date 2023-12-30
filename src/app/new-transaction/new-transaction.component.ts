@@ -32,8 +32,6 @@ export class NewTransactionComponent {
 
   submit() {
     if (this.type) {
-      console.log(this.categoryId);
-
       const transaction: NewTransaction = {
         type: this.type,
         date: this.date,
