@@ -3,12 +3,12 @@ import { Transaction } from '../transaction';
 import { CurrencyPipe, JsonPipe, NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-list',
+  selector: 'app-transaction-list',
   standalone: true,
   imports: [CurrencyPipe, JsonPipe, NgClass],
-  templateUrl: './list.component.html',
-  styleUrl: './list.component.scss',
+  templateUrl: './transaction-list.component.html',
+  styleUrl: './transaction-list.component.scss',
 })
-export class ListComponent {
+export class TransactionListComponent {
   @Input() transactions: Transaction[] = [];
 }

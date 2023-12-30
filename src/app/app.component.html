@@ -8,5 +8,5 @@
   [categories]="categories()"
   (addTransaction)="addTransaction($event)"></app-new-transaction>
 <app-new-category (addCategory)="addCategory($event)"></app-new-category>
-<app-list-filter [categories]="categories()"></app-list-filter>
-<app-list [transactions]="transactions()"></app-list>
+<app-filter [categories]="categories()"></app-filter>
+<app-transaction-list [transactions]="transactions()"></app-transaction-list>

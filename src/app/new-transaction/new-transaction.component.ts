@@ -36,6 +36,7 @@ export class NewTransactionComponent {
   amount: number = 0;
   description = '';
   categoryId = '';
+  recurring: 'MONTHLY' | 'YEARLY' | null = null;
 
   submit() {
     if (this.type) {
@@ -45,6 +46,7 @@ export class NewTransactionComponent {
         amount: this.amount,
         ...(this.description && { description: this.description }),
         ...(this.categoryId && { categoryId: this.categoryId }),
+        ...(!!this.recurring && { recurring: this.recurring }),
       };
 
       this.addTransaction.emit(transaction);

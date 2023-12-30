@@ -6,4 +6,5 @@ export interface NewTransaction {
   amount: number;
   description?: string;
   categoryId?: string;
+  recurring?: 'MONTHLY' | 'YEARLY';
 }

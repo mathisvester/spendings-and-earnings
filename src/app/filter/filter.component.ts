@@ -4,13 +4,13 @@ import { SelectCategoryComponent } from '../select-category/select-category.comp
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-list-filter',
+  selector: 'app-filter',
   standalone: true,
   imports: [SelectCategoryComponent, FormsModule],
-  templateUrl: './list-filter.component.html',
-  styleUrl: './list-filter.component.scss',
+  templateUrl: './filter.component.html',
+  styleUrl: './filter.component.scss',
 })
-export class ListFilterComponent {
+export class FilterComponent {
   @Input() categories: Category[] = [];
   categoryId = '';
 }

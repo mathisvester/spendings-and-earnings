@@ -2,9 +2,9 @@ import { Component, inject, Signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { NewTransactionComponent } from './new-transaction/new-transaction.component';
-import { ListComponent } from './list/list.component';
+import { TransactionListComponent } from './transaction-list/transaction-list.component';
 import { NewCategoryComponent } from './new-category/new-category.component';
-import { ListFilterComponent } from './list-filter/list-filter.component';
+import { FilterComponent } from './filter/filter.component';
 import { Category } from './category';
 import { CategoryService } from './category.service';
 import { NewCategory } from './new-category';
@@ -19,9 +19,9 @@ import { Transaction } from './transaction';
     CommonModule,
     RouterOutlet,
     NewTransactionComponent,
-    ListComponent,
+    TransactionListComponent,
     NewCategoryComponent,
-    ListFilterComponent,
+    FilterComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

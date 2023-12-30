@@ -35,6 +35,27 @@
     </fieldset>
 
     <fieldset>
+      <legend>Recurring</legend>
+      <div>
+        <input
+          type="radio"
+          id="recurringMonthly"
+          name="recurringMonthly"
+          value="MONTHLY"
+          [(ngModel)]="recurring" />
+        <label for="recurringMonthly">Monthly</label>
+
+        <input
+          type="radio"
+          id="recurringYearly"
+          name="recurringYearly"
+          value="YEARLY"
+          [(ngModel)]="recurring" />
+        <label for="recurringYearly">Yearly</label>
+      </div>
+    </fieldset>
+
+    <fieldset>
       <app-select-category
         [(categoryId)]="categoryId"
         [categories]="categories"></app-select-category>
