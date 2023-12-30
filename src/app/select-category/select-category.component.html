@@ -1,6 +1,6 @@
-<label for="category-{{ identifier }}">Category</label>
+<label for="category">Category</label>
 <select
-  id="category-{{ identifier }}"
+  id="category"
   [(ngModel)]="categoryId"
   (ngModelChange)="categoryIdChange.emit($event)">
   <option disabled [value]="''">Select category</option>

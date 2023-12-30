@@ -16,7 +16,9 @@
   [categories]="categories()"
   (deleteCategory)="deleteCategory($event)"
   (updateCategory)="selectCategory($event)"></app-category-list>
-<app-filter [categories]="categories()"></app-filter>
+<app-filter
+  [categories]="categories()"
+  (filterChange)="filterTransactions($event)"></app-filter>
 <app-transaction-list
   [transactions]="transactions()"
   (deleteTransaction)="deleteTransaction($event)"

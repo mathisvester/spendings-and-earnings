@@ -14,6 +14,7 @@ import { Transaction } from './transaction';
 import { isTransaction } from './is-transaction';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { isCategory } from './is-category';
+import { Filter } from './filter';
 
 @Component({
   selector: 'app-root',
@@ -81,5 +82,10 @@ export class AppComponent implements OnInit {
 
   selectTransaction(transactionId: number | null) {
     this.transactionService.selectTransaction(transactionId);
+  }
+
+  filterTransactions(filter: Filter) {
+    console.log('Filter changed: ', filter);
+    // this.transactionService.filterTransactions(filter);
   }
 }
