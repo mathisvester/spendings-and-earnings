@@ -1,5 +1,12 @@
 @if (type) {
-  <h1>New {{ type }}</h1>
+  <h1>
+    @if (selectedTransaction?.type === type) {
+      Update
+    } @else {
+      New
+    }
+    {{ type }}
+  </h1>
   <form (ngSubmit)="submit()" #f="ngForm">
     <fieldset>
       <label for="date">Date</label>
@@ -61,6 +68,6 @@
         [categories]="categories"></app-select-category>
     </fieldset>
 
-    <button [disabled]="!f.valid">Add</button>
+    <button [disabled]="!f.valid">Save</button>
   </form>
 }

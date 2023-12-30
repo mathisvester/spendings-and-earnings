@@ -20,4 +20,16 @@ export class CategoryService {
       { id: uuid.v4(), ...category },
     ]);
   }
+
+  delete(categoryId: string) {
+    this._categories.update(categories =>
+      categories.filter(category => category.id !== categoryId)
+    );
+  }
+
+  update(category: Category) {
+    this._categories.update(categories =>
+      categories.map(c => (c.id === c.id ? category : c))
+    );
+  }
 }

@@ -2,11 +2,16 @@
 <app-new-transaction
   [type]="'EARNING'"
   [categories]="categories()"
-  (addTransaction)="addTransaction($event)"></app-new-transaction>
+  [selectedTransaction]="selectedTransaction()"
+  (saveTransaction)="saveTransaction($event)"></app-new-transaction>
 <app-new-transaction
   [type]="'SPENDING'"
   [categories]="categories()"
-  (addTransaction)="addTransaction($event)"></app-new-transaction>
+  [selectedTransaction]="selectedTransaction()"
+  (saveTransaction)="saveTransaction($event)"></app-new-transaction>
 <app-new-category (addCategory)="addCategory($event)"></app-new-category>
 <app-filter [categories]="categories()"></app-filter>
-<app-transaction-list [transactions]="transactions()"></app-transaction-list>
+<app-transaction-list
+  [transactions]="transactions()"
+  (deleteTransaction)="deleteTransaction($event)"
+  (updateTransaction)="selectTransaction($event)"></app-transaction-list>

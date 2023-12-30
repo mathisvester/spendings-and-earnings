@@ -11,6 +11,7 @@ import { NewCategory } from './new-category';
 import { NewTransaction } from './new-transaction';
 import { TransactionService } from './transaction.service';
 import { Transaction } from './transaction';
+import { isTransaction } from './is-transaction';
 
 @Component({
   selector: 'app-root',
@@ -29,6 +30,7 @@ import { Transaction } from './transaction';
 export class AppComponent {
   readonly categories: Signal<Category[]>;
   readonly transactions: Signal<Transaction[]>;
+  readonly selectedTransaction: Signal<Transaction | null>;
 
   private readonly categoryService = inject(CategoryService);
   private readonly transactionService = inject(TransactionService);
@@ -36,13 +38,26 @@ export class AppComponent {
   constructor() {
     this.categories = this.categoryService.categories;
     this.transactions = this.transactionService.transactions;
+    this.selectedTransaction = this.transactionService.selectedTransaction;
   }
 
   addCategory(category: NewCategory) {
     this.categoryService.add(category);
   }
 
-  addTransaction(transaction: NewTransaction) {
-    this.transactionService.add(transaction);
+  saveTransaction(transaction: NewTransaction | Transaction) {
+    if (isTransaction(transaction)) {
+      this.transactionService.update(transaction);
+    } else {
+      this.transactionService.add(transaction);
+    }
+  }
+
+  deleteTransaction(transactionId: string) {
+    this.transactionService.delete(transactionId);
+  }
+
+  selectTransaction(transactionId: string | null) {
+    this.transactionService.selectTransaction(transactionId);
   }
 }

@@ -12,6 +12,7 @@ import { SelectCategoryComponent } from '../select-category/select-category.comp
 import { Category } from '../category';
 import { DatePipe, NgIf } from '@angular/common';
 import { LocalDateValueAccessor } from 'angular-date-value-accessor';
+import { Transaction } from '../transaction';
 
 @Component({
   selector: 'app-new-transaction',
@@ -30,7 +31,21 @@ export class NewTransactionComponent {
   @ViewChild('f') form!: NgForm;
   @Input({ required: true }) type: TransactionType | undefined;
   @Input() categories: Category[] = [];
-  @Output() addTransaction = new EventEmitter<NewTransaction>();
+  @Output() saveTransaction = new EventEmitter<NewTransaction | Transaction>();
+  @Input() set selectedTransaction(transaction: Transaction | null) {
+    this._selectedTransaction = transaction;
+
+    if (
+      this._selectedTransaction &&
+      this._selectedTransaction.type === this.type
+    ) {
+      this.setFormValue(this._selectedTransaction);
+    }
+  }
+
+  get selectedTransaction(): Transaction | null {
+    return this._selectedTransaction;
+  }
 
   date = new Date();
   amount: number = 0;
@@ -38,9 +53,12 @@ export class NewTransactionComponent {
   categoryId = '';
   recurring: 'MONTHLY' | 'YEARLY' | null = null;
 
+  private _selectedTransaction: Transaction | null = null;
+
   submit() {
     if (this.type) {
-      const transaction: NewTransaction = {
+      const transaction: NewTransaction | Transaction = {
+        ...(this.selectedTransaction && { id: this.selectedTransaction.id }),
         type: this.type,
         date: this.date,
         amount: this.amount,
@@ -49,8 +67,22 @@ export class NewTransactionComponent {
         ...(!!this.recurring && { recurring: this.recurring }),
       };
 
-      this.addTransaction.emit(transaction);
+      this.saveTransaction.emit(transaction);
       this.form.reset({ date: new Date() });
+    }
+  }
+
+  setFormValue(transaction: Transaction) {
+    this.date = transaction.date;
+    this.amount = transaction.amount;
+    if (!!transaction.description) {
+      this.description = transaction.description;
+    }
+    if (!!transaction.categoryId) {
+      this.categoryId = transaction.categoryId;
+    }
+    if (!!transaction.recurring) {
+      this.recurring = transaction.recurring;
     }
   }
 }
