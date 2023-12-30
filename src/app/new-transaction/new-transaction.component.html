@@ -8,8 +8,8 @@
         placeholder="Date"
         id="date"
         name="date"
-        [ngModel]="date | date: 'yyyy-MM-dd'"
-        (ngModelChange)="date = $event"
+        [(ngModel)]="date"
+        useValueAsLocalDate
         required />
     </fieldset>
 

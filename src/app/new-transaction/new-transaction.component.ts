@@ -11,11 +11,18 @@ import { NewTransaction } from '../new-transaction';
 import { SelectCategoryComponent } from '../select-category/select-category.component';
 import { Category } from '../category';
 import { DatePipe, NgIf } from '@angular/common';
+import { LocalDateValueAccessor } from 'angular-date-value-accessor';
 
 @Component({
   selector: 'app-new-transaction',
   standalone: true,
-  imports: [FormsModule, SelectCategoryComponent, NgIf, DatePipe],
+  imports: [
+    FormsModule,
+    SelectCategoryComponent,
+    NgIf,
+    DatePipe,
+    LocalDateValueAccessor,
+  ],
   templateUrl: './new-transaction.component.html',
   styleUrl: './new-transaction.component.scss',
 })
@@ -41,7 +48,7 @@ export class NewTransactionComponent {
       };
 
       this.addTransaction.emit(transaction);
-      this.form.resetForm();
+      this.form.reset({ date: new Date() });
     }
   }
 }
