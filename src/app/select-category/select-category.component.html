@@ -1,0 +1,10 @@
+<label for="category-{{ identifier }}">Category</label>
+<select
+  id="category-{{ identifier }}"
+  [(ngModel)]="categoryId"
+  (ngModelChange)="categoryIdChange.emit($event)">
+  <option disabled [value]="''">Select category</option>
+  @for (category of categories; track category.id) {
+    <option [value]="category.id">{{ category.title }}</option>
+  }
+</select>

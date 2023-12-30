@@ -1,0 +1,20 @@
+<h2>Filter</h2>
+<form>
+  <fieldset>
+    <label for="from">From</label>
+    <input type="date" placeholder="From" id="from" name="from" />
+  </fieldset>
+
+  <fieldset>
+    <label for="to">To</label>
+    <input type="date" placeholder="To" id="to" name="to" />
+  </fieldset>
+
+  <fieldset>
+    <app-select-category
+      [(categoryId)]="categoryId"
+      [categories]="categories"></app-select-category>
+  </fieldset>
+
+  <button>Filter</button>
+</form>

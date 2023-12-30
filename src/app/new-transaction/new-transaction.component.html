@@ -1,0 +1,45 @@
+@if (type) {
+  <h1>New {{ type }}</h1>
+  <form (ngSubmit)="submit()" #f="ngForm">
+    <fieldset>
+      <label for="date">Date</label>
+      <input
+        type="date"
+        placeholder="Date"
+        id="date"
+        name="date"
+        [ngModel]="date | date: 'yyyy-MM-dd'"
+        (ngModelChange)="date = $event"
+        required />
+    </fieldset>
+
+    <fieldset>
+      <label for="amount">Amount</label>
+      <input
+        type="number"
+        placeholder="Amount"
+        id="amount"
+        name="amount"
+        [(ngModel)]="amount"
+        min="0.01"
+        required />
+    </fieldset>
+
+    <fieldset>
+      <label for="description">Description</label>
+      <textarea
+        id="description"
+        name="description"
+        [(ngModel)]="description"
+        maxlength="250"></textarea>
+    </fieldset>
+
+    <fieldset>
+      <app-select-category
+        [(categoryId)]="categoryId"
+        [categories]="categories"></app-select-category>
+    </fieldset>
+
+    <button [disabled]="!f.valid">Add</button>
+  </form>
+}

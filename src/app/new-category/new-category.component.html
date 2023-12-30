@@ -1,0 +1,15 @@
+<h2>New category</h2>
+<form (ngSubmit)="addCategory.emit({ title }); f.resetForm()" #f="ngForm">
+  <fieldset>
+    <label for="title">Title</label>
+    <input
+      type="text"
+      placeholder="Title"
+      id="title"
+      name="title"
+      [(ngModel)]="title"
+      required
+      minlength="4" />
+  </fieldset>
+  <button [disabled]="!f.valid">Add</button>
+</form>

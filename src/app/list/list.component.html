@@ -1,0 +1,16 @@
+<h2>Overview</h2>
+@if (transactions.length >= 1) {
+  <ul>
+    @for (transaction of transactions; track transaction.id) {
+      <li
+        [ngClass]="{
+          'text-green': transaction.type === 'EARNING',
+          'text-red': transaction.type === 'SPENDING'
+        }">
+        {{ transaction.description }} {{ transaction.amount | currency }}
+      </li>
+    }
+  </ul>
+} @else {
+  <p>No items</p>
+}
