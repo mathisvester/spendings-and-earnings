@@ -8,7 +8,10 @@
           'text-red': transaction.type === 'SPENDING'
         }">
         <p>
-          {{ transaction.date | date: 'short' }}{{ transaction.description }}
+          {{ transaction.date | date: 'short' }}
+          @if (transaction.description) {
+            {{ transaction.description }}
+          }
           @if (transaction.type === 'SPENDING') {
             -{{ transaction.amount | currency }}
           } @else {
