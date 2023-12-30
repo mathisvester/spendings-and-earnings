@@ -7,7 +7,17 @@
           'text-green': transaction.type === 'EARNING',
           'text-red': transaction.type === 'SPENDING'
         }">
-        <p>{{ transaction.description }} {{ transaction.amount | currency }}</p>
+        <p>
+          {{ transaction.date | date: 'short' }}{{ transaction.description }}
+          @if (transaction.type === 'SPENDING') {
+            -{{ transaction.amount | currency }}
+          } @else {
+            {{ transaction.amount | currency }}
+          }
+          @if (transaction.recurring) {
+            {{ transaction.recurring }}
+          }
+        </p>
         <button (click)="deleteTransaction.emit(transaction.id)">Delete</button
         ><button (click)="updateTransaction.emit(transaction.id)">
           Update
