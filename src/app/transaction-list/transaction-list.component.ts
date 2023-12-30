@@ -11,6 +11,6 @@ import { CurrencyPipe, DatePipe, NgClass } from '@angular/common';
 })
 export class TransactionListComponent {
   @Input() transactions: Transaction[] = [];
-  @Output() deleteTransaction = new EventEmitter<string>();
-  @Output() updateTransaction = new EventEmitter<string>();
+  @Output() deleteTransaction = new EventEmitter<number>();
+  @Output() updateTransaction = new EventEmitter<number>();
 }

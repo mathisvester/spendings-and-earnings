@@ -1,5 +1,4 @@
 import { NewTransaction } from './new-transaction';
+import { WithID } from 'ngx-indexed-db';
 
-export interface Transaction extends NewTransaction {
-  id: string;
-}
+export type Transaction = NewTransaction & WithID;

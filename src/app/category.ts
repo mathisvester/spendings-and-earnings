@@ -1,5 +1,4 @@
 import { NewCategory } from './new-category';
+import { WithID } from 'ngx-indexed-db';
 
-export interface Category extends NewCategory {
-  id: string;
-}
+export type Category = NewCategory & WithID;

@@ -1,6 +1,13 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 import { NewCategory } from '../new-category';
+import { Category } from '../category';
 
 @Component({
   selector: 'app-new-category',
@@ -10,6 +17,35 @@ import { NewCategory } from '../new-category';
   styleUrl: './new-category.component.scss',
 })
 export class NewCategoryComponent {
-  @Output() addCategory = new EventEmitter<NewCategory>();
+  @ViewChild('f') form!: NgForm;
+  @Output() saveCategory = new EventEmitter<NewCategory>();
+  @Input() set selectedCategory(category: Category | null) {
+    this._selectedCategory = category;
+
+    if (this._selectedCategory) {
+      this.setFormValue(this._selectedCategory);
+    }
+  }
+
+  get selectedCategory(): Category | null {
+    return this._selectedCategory;
+  }
+
   title = '';
+
+  private _selectedCategory: Category | null = null;
+
+  submit() {
+    const category: Category | NewCategory = {
+      ...(this.selectedCategory && { id: this.selectedCategory.id }),
+      title: this.title,
+    };
+
+    this.saveCategory.emit(category);
+    this.form.reset();
+  }
+
+  setFormValue(category: Category) {
+    this.title = category.title;
+  }
 }

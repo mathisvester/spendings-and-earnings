@@ -1,5 +1,12 @@
-<h2>New category</h2>
-<form (ngSubmit)="addCategory.emit({ title }); f.resetForm()" #f="ngForm">
+<h2>
+  @if (selectedCategory) {
+    Update
+  } @else {
+    New
+  }
+  category
+</h2>
+<form (ngSubmit)="submit()" #f="ngForm">
   <fieldset>
     <label for="title">Title</label>
     <input
@@ -11,5 +18,5 @@
       required
       minlength="4" />
   </fieldset>
-  <button [disabled]="!f.valid">Add</button>
+  <button [disabled]="!f.valid">Save</button>
 </form>

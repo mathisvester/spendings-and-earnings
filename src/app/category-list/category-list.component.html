@@ -1,0 +1,15 @@
+@if (categories.length >= 1) {
+  <ul>
+    @for (category of categories; track category.id) {
+      <li>
+        <p>
+          {{ category.title }}
+        </p>
+        <button (click)="deleteCategory.emit(category.id)">Delete</button
+        ><button (click)="updateCategory.emit(category.id)">Update</button>
+      </li>
+    }
+  </ul>
+} @else {
+  <p>No items</p>
+}
