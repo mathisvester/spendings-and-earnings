@@ -19,11 +19,7 @@ import { Filter } from '../filter';
 })
 export class FilterComponent {
   @Input() categories: Category[] = [];
-  @Input() filter: Filter = {
-    month: new Date().getMonth(),
-    year: new Date().getFullYear(),
-    categoryId: '',
-  };
+  @Input({ required: true }) filter!: Filter;
   @Output() filterChange = new EventEmitter<Filter>();
 
   get years() {
@@ -42,4 +38,8 @@ export class FilterComponent {
     FormStyle.Format,
     TranslationWidth.Wide
   );
+
+  submit() {
+    this.filterChange.emit({ ...this.filter });
+  }
 }

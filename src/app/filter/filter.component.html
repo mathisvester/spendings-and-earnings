@@ -1,38 +1,41 @@
-<h2>Filter</h2>
-<form>
-  <fieldset>
-    <legend>Date</legend>
-    <div>
-      <label for="month">Month</label>
-      <select
-        id="month"
-        name="month"
-        [(ngModel)]="filter.month"
-        (ngModelChange)="filterChange.emit(filter)"
-        required>
-        @for (month of months; track $index) {
-          <option [ngValue]="$index">{{ month }}</option>
-        }
-      </select>
-    </div>
-    <div>
-      <label for="year">Year</label>
-      <select
-        id="year"
-        name="year"
-        [(ngModel)]="filter.year"
-        (ngModelChange)="filterChange.emit(filter)"
-        required>
-        @for (year of years; track $index) {
-          <option [ngValue]="year">{{ year }}</option>
-        }
-      </select>
-    </div>
-  </fieldset>
+@if (filter) {
+  <h2>Filter</h2>
+  <form>
+    <fieldset>
+      <legend>Date</legend>
+      <div>
+        <label for="month">Month</label>
+        <select
+          id="month"
+          name="month"
+          [(ngModel)]="filter.month"
+          (ngModelChange)="submit()"
+          required>
+          @for (month of months; track $index) {
+            <option [ngValue]="$index">{{ month }}</option>
+          }
+        </select>
+      </div>
+      <div>
+        <label for="year">Year</label>
+        <select
+          id="year"
+          name="year"
+          [(ngModel)]="filter.year"
+          (ngModelChange)="submit()"
+          required>
+          @for (year of years; track $index) {
+            <option [ngValue]="year">{{ year }}</option>
+          }
+        </select>
+      </div>
+    </fieldset>
 
-  <fieldset>
-    <app-select-category
-      [(categoryId)]="filter.categoryId"
-      [categories]="categories"></app-select-category>
-  </fieldset>
-</form>
+    <fieldset>
+      <!-- todo: apply filter change -->
+      <app-select-category
+        [(categoryId)]="filter.categoryId"
+        [categories]="categories"></app-select-category>
+    </fieldset>
+  </form>
+}

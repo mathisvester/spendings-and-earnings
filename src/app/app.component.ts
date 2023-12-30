@@ -36,6 +36,7 @@ export class AppComponent implements OnInit {
   readonly selectedCategory: Signal<Category | null>;
   readonly transactions: Signal<Transaction[]>;
   readonly selectedTransaction: Signal<Transaction | null>;
+  readonly filter: Signal<Filter>;
 
   private readonly categoryService = inject(CategoryService);
   private readonly transactionService = inject(TransactionService);
@@ -45,6 +46,7 @@ export class AppComponent implements OnInit {
     this.selectedCategory = this.categoryService.selectedCategory;
     this.transactions = this.transactionService.transactions;
     this.selectedTransaction = this.transactionService.selectedTransaction;
+    this.filter = this.transactionService.filter;
   }
 
   ngOnInit() {
@@ -85,7 +87,6 @@ export class AppComponent implements OnInit {
   }
 
   filterTransactions(filter: Filter) {
-    console.log('Filter changed: ', filter);
-    // this.transactionService.filterTransactions(filter);
+    this.transactionService.updateFilter(filter);
   }
 }

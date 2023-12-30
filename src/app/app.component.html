@@ -18,6 +18,7 @@
   (updateCategory)="selectCategory($event)"></app-category-list>
 <app-filter
   [categories]="categories()"
+  [filter]="filter()"
   (filterChange)="filterTransactions($event)"></app-filter>
 <app-transaction-list
   [transactions]="transactions()"

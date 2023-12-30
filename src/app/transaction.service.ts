@@ -10,6 +10,9 @@ import { Transaction } from './transaction';
 import { NewTransaction } from './new-transaction';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
 import { filter } from 'rxjs';
+import { Filter } from './filter';
+import { defaultFilter } from './default-filter';
+import { filterTransactions } from './transaction-filter';
 
 @Injectable({
   providedIn: 'root',
@@ -17,20 +20,26 @@ import { filter } from 'rxjs';
 export class TransactionService {
   readonly transactions: Signal<Transaction[]>;
   readonly selectedTransaction: Signal<Transaction | null>;
+  readonly filter: Signal<Filter>;
   private readonly _transactions: WritableSignal<Transaction[]> = signal([]);
   private readonly _selectedTransactionId: WritableSignal<number | null> =
     signal(null);
-
+  private readonly _filter: WritableSignal<Filter> = signal(defaultFilter);
   private readonly dbService = inject(NgxIndexedDBService);
 
   constructor() {
-    this.transactions = this._transactions.asReadonly();
+    this.transactions = computed(() =>
+      filterTransactions(this._transactions(), this._filter()).sort(
+        (a, b) => +b.date - +a.date
+      )
+    );
     this.selectedTransaction = computed(
       () =>
-        this._transactions().find(
+        this.transactions().find(
           transaction => transaction.id === this._selectedTransactionId()
         ) ?? null
     );
+    this.filter = this._filter.asReadonly();
   }
 
   load() {
@@ -69,5 +78,9 @@ export class TransactionService {
 
   selectTransaction(transactionId: number | null) {
     this._selectedTransactionId.set(transactionId);
+  }
+
+  updateFilter(filter: Filter) {
+    this._filter.update(() => filter);
   }
 }
