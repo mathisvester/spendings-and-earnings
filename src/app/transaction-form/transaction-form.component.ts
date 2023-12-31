@@ -22,16 +22,16 @@ import { SelectCategoryComponent } from '../select-category/select-category.comp
 })
 export class TransactionFormComponent {
   @ViewChild('f') form!: NgForm;
-  @Input() set selectedTransaction(transaction: Transaction | null) {
-    this._selectedTransaction = transaction;
+  @Input() set transaction(transaction: Transaction | null) {
+    this._transaction = transaction;
 
-    if (this._selectedTransaction) {
-      this.setFormValue(this._selectedTransaction);
+    if (this._transaction) {
+      this.setFormValue(this._transaction);
     }
   }
 
-  get selectedTransaction(): Transaction | null {
-    return this._selectedTransaction;
+  get transaction(): Transaction | null {
+    return this._transaction;
   }
 
   @Input() type: TransactionType | undefined;
@@ -41,20 +41,20 @@ export class TransactionFormComponent {
   date = new Date();
   amount: number = 0;
   description = '';
-  categoryId = '';
+  categoryId: number | null = null;
   recurring: 'MONTHLY' | 'YEARLY' | null = null;
 
-  private _selectedTransaction: Transaction | null = null;
+  private _transaction: Transaction | null = null;
 
   submit() {
     if (this.type) {
       const transaction: NewTransaction | Transaction = {
-        ...(this.selectedTransaction && { id: this.selectedTransaction.id }),
+        ...(this.transaction && { id: this.transaction.id }),
         type: this.type,
         date: this.date,
         amount: this.amount,
         ...(this.description && { description: this.description }),
-        ...(this.categoryId && { categoryId: this.categoryId }),
+        categoryId: this.categoryId,
         ...(!!this.recurring && { recurring: this.recurring }),
       };
 

@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { TransactionComponent } from './transaction/transaction.component';
 import { HomeComponent } from './home/home.component';
+import { SettingsComponent } from './settings/settings.component';
 
 export const routes: Routes = [
   {
@@ -19,6 +20,10 @@ export const routes: Routes = [
   {
     path: 'update-transaction/:transactionId',
     component: TransactionComponent,
+  },
+  {
+    path: 'settings',
+    component: SettingsComponent,
   },
   {
     path: '**',

@@ -11,6 +11,6 @@ import { FormsModule } from '@angular/forms';
 })
 export class SelectCategoryComponent {
   @Input() categories: Category[] = [];
-  @Input() categoryId = '';
-  @Output() categoryIdChange = new EventEmitter<string>();
+  @Input() categoryId: number | null = null;
+  @Output() categoryIdChange = new EventEmitter<number>();
 }

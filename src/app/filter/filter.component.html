@@ -32,9 +32,9 @@
     </fieldset>
 
     <fieldset>
-      <!-- todo: apply filter change -->
       <app-select-category
         [(categoryId)]="filter.categoryId"
+        (categoryIdChange)="submit()"
         [categories]="categories"></app-select-category>
     </fieldset>
   </form>

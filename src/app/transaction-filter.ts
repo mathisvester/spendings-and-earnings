@@ -5,8 +5,11 @@ export function filterTransactions(
   transactions: Transaction[],
   filter: Filter
 ): Transaction[] {
-  return transactions.filter(
-    t =>
-      t.date.getMonth() === filter.month && t.date.getFullYear() === filter.year
-  ); // todo: apply filter by category
+  return transactions.filter(t =>
+    t.date.getMonth() === filter.month &&
+    t.date.getFullYear() === filter.year &&
+    filter.categoryId
+      ? t.categoryId === filter.categoryId
+      : true
+  );
 }

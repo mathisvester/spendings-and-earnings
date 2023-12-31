@@ -1,13 +1,3 @@
-<h1>
-  @if (selectedTransaction) {
-    Update
-  } @else {
-    New
-  }
-  @if (type) {
-    {{ type }}
-  }
-</h1>
 <form (ngSubmit)="submit()" #f="ngForm">
   <fieldset>
     <label for="date">Date</label>

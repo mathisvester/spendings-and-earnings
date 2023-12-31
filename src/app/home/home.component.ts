@@ -8,8 +8,6 @@ import { Transaction } from '../transaction';
 import { Filter } from '../filter';
 import { CategoryService } from '../category.service';
 import { TransactionService } from '../transaction.service';
-import { NewCategory } from '../new-category';
-import { isCategory } from '../is-category';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { TransactionComponent } from '../transaction/transaction.component';
@@ -32,9 +30,7 @@ import { TransactionComponent } from '../transaction/transaction.component';
 })
 export class HomeComponent implements OnInit {
   readonly categories: Signal<Category[]>;
-  readonly selectedCategory: Signal<Category | null>;
   readonly transactions: Signal<Transaction[]>;
-  readonly selectedTransaction: Signal<Transaction | null>;
   readonly filter: Signal<Filter>;
   readonly totalEarnings: Signal<number>;
   readonly totalSpendings: Signal<number>;
@@ -45,9 +41,7 @@ export class HomeComponent implements OnInit {
 
   constructor() {
     this.categories = this.categoryService.categories;
-    this.selectedCategory = this.categoryService.selectedCategory;
     this.transactions = this.transactionService.transactions;
-    this.selectedTransaction = this.transactionService.transaction;
     this.filter = this.transactionService.filter;
     this.totalEarnings = this.transactionService.totalEarnings;
     this.totalSpendings = this.transactionService.totalSpendings;
@@ -56,22 +50,6 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.categoryService.load();
     this.transactionService.load();
-  }
-
-  saveCategory(category: NewCategory | Category) {
-    if (isCategory(category)) {
-      this.categoryService.update(category);
-    } else {
-      this.categoryService.add(category);
-    }
-  }
-
-  deleteCategory(categoryId: number) {
-    this.categoryService.delete(categoryId);
-  }
-
-  selectCategory(categoryId: number | null) {
-    this.categoryService.selectCategory(categoryId);
   }
 
   deleteTransaction(transactionId: number) {

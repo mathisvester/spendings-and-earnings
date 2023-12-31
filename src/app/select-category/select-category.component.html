@@ -3,8 +3,8 @@
   id="category"
   [(ngModel)]="categoryId"
   (ngModelChange)="categoryIdChange.emit($event)">
-  <option disabled [value]="''">Select category</option>
+  <option [ngValue]="null">Select category</option>
   @for (category of categories; track category.id) {
-    <option [value]="category.id">{{ category.title }}</option>
+    <option [ngValue]="category.id">{{ category.title }}</option>
   }
 </select>

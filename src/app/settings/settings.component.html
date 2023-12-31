@@ -1,0 +1,9 @@
+<button [routerLink]="['/home']">Home</button>
+<h1>Manage categories</h1>
+<app-new-category
+  [selectedCategory]="selectedCategory()"
+  (saveCategory)="saveCategory($event)"></app-new-category>
+<app-category-list
+  [categories]="categories()"
+  (deleteCategory)="deleteCategory($event)"
+  (updateCategory)="selectCategory($event)"></app-category-list>

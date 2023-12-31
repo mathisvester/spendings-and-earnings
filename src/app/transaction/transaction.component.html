@@ -1,6 +1,16 @@
 <button [routerLink]="['/home']">Home</button>
+<h1>
+  @if (transaction()) {
+    Update
+  } @else {
+    New
+  }
+  @if (type) {
+    {{ type }}
+  }
+</h1>
 <app-transaction-form
   [type]="transaction()?.type ?? type"
-  [selectedTransaction]="transaction()"
+  [transaction]="transaction()"
   [categories]="categories()"
   (saveTransaction)="saveTransaction($event)"></app-transaction-form>

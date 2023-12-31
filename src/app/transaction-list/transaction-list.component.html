@@ -26,6 +26,9 @@
           @if (transaction.recurring) {
             {{ transaction.recurring }}
           }
+          @if (transaction.categoryId) {
+            Category: {{ transaction.categoryId }}
+          }
         </p>
         <button (click)="deleteTransaction.emit(transaction.id)">Delete</button
         ><button (click)="updateTransaction.emit(transaction.id)">
