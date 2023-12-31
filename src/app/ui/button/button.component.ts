@@ -10,8 +10,8 @@ import { NgClass } from '@angular/common';
 })
 export class ButtonComponent {
   @Input() disabled = false;
-  @Input() label = 'Button';
   @Input() variant: 'primary' | 'default' | 'success' | 'danger' = 'default';
   @Input() fullWidth = false;
+  @Input() ariaLabel: string | null = null;
   @Output() buttonClick = new EventEmitter<void>();
 }

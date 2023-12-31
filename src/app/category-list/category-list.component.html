@@ -6,11 +6,11 @@
           <p>
             {{ category.title }}
           </p>
-          <button (click)="deleteCategory.emit(category.id)">
-            {{ t('delete') }}</button
-          ><button (click)="updateCategory.emit(category.id)">
+          <app-button (buttonClick)="deleteCategory.emit(category.id)">
+            {{ t('delete') }}</app-button
+          ><app-button (buttonClick)="updateCategory.emit(category.id)">
             {{ t('update') }}
-          </button>
+          </app-button>
         </li>
       }
     </ul>

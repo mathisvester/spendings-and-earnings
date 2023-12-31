@@ -14,6 +14,7 @@ import { TransactionComponent } from '../transaction/transaction.component';
 import { TranslocoDirective } from '@ngneat/transloco';
 import { PageComponent } from '../ui/page/page.component';
 import { ButtonComponent } from '../ui/button/button.component';
+import { HeadlineComponent } from '../ui/headline/headline.component';
 
 @Component({
   selector: 'app-home',
@@ -30,6 +31,7 @@ import { ButtonComponent } from '../ui/button/button.component';
     TranslocoDirective,
     PageComponent,
     ButtonComponent,
+    HeadlineComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

@@ -60,6 +60,8 @@
         [categories]="categories"></app-select-category>
     </fieldset>
 
-    <button [disabled]="!f.valid">{{ t('save') }}</button>
+    <app-button [disabled]="!f.valid" [variant]="'primary'">{{
+      t('save')
+    }}</app-button>
   </form>
 </ng-container>

@@ -1,18 +1,22 @@
 <div class="min-h-full">
   <header
-    class="mb-4 flex bg-white px-4 py-4 align-middle shadow"
+    class="mb-4 flex items-center bg-white px-4 py-4 shadow"
     *transloco="let t">
     @if (showBackButton) {
-      <div class="pr-2">
-        <button [routerLink]="['/home']">{{ t('back') }}</button>
+      <div class="pr-3">
+        <app-button [ariaLabel]="t('back')" (buttonClick)="navigateToHome()"
+          ><ng-icon name="heroArrowLeft"></ng-icon
+        ></app-button>
       </div>
     }
     <h1 class="font-medium">{{ title }}</h1>
     @if (showSettingsButton) {
-      <div class="ms-auto ps-2">
-        <a [routerLink]="['/settings']">
-          {{ t('manageCategories') }}
-        </a>
+      <div class="ms-auto ps-3">
+        <app-button
+          [ariaLabel]="t('manageCategories')"
+          (buttonClick)="navigateToSettings()"
+          ><ng-icon name="heroCog6Tooth"></ng-icon
+        ></app-button>
       </div>
     }
   </header>

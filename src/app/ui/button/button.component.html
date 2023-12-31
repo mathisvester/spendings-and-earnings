@@ -13,6 +13,7 @@
       variant === 'default',
     'w-full': fullWidth
   }"
+  [attr.aria-current]="ariaLabel"
   class="inline-flex cursor-pointer items-center justify-center rounded-md border px-3 py-2 text-slate-100 transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
-  {{ label }}
+  <ng-content></ng-content>
 </button>

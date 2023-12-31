@@ -1,6 +1,7 @@
 <ng-container *transloco="let t">
-  <label for="category">{{ t('category') }}</label>
+  <label for="category" class="mb-1 block text-sm">{{ t('category') }}</label>
   <select
+    class="w-full rounded-md border border-gray-300 px-2 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
     id="category"
     [(ngModel)]="categoryId"
     (ngModelChange)="categoryIdChange.emit($event)">

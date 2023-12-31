@@ -1,11 +1,11 @@
 <ng-container *transloco="let t">
-  <h2>
+  <app-headline>
     @if (selectedCategory) {
       {{ t('updateCategory') }}
     } @else {
       {{ t('newCategory') }}
     }
-  </h2>
+  </app-headline>
   <form (ngSubmit)="submit()" #f="ngForm">
     <fieldset>
       <label for="title">{{ t('title') }}</label>
@@ -18,6 +18,8 @@
         required
         minlength="4" />
     </fieldset>
-    <button [disabled]="!f.valid">{{ t('save') }}</button>
+    <app-button [disabled]="!f.valid" [variant]="'primary'">{{
+      t('save')
+    }}</app-button>
   </form>
 </ng-container>

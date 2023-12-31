@@ -10,6 +10,7 @@ import {
 } from '@angular/common';
 import { Filter } from '../filter';
 import { TranslocoDirective } from '@ngneat/transloco';
+import { HeadlineComponent } from '../ui/headline/headline.component';
 
 @Component({
   selector: 'app-filter',
@@ -19,6 +20,7 @@ import { TranslocoDirective } from '@ngneat/transloco';
     FormsModule,
     DecimalPipe,
     TranslocoDirective,
+    HeadlineComponent,
   ],
   templateUrl: './filter.component.html',
   styleUrl: './filter.component.scss',

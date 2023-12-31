@@ -1,18 +1,22 @@
 <ng-container *transloco="let t">
   <app-page [title]="t('appTitle')" [showBackButton]="false">
-    <div class="grid grid-cols-2 gap-4">
+    <div class="mb-4 grid grid-cols-2 gap-4">
       <app-button
-        [label]="t('newEarning')"
         [fullWidth]="true"
         [variant]="'success'"
-        (buttonClick)="newEarning()" />
+        (buttonClick)="newEarning()">
+        {{ t('newEarning') }}
+      </app-button>
       <app-button
-        [label]="t('newSpending')"
         [fullWidth]="true"
         [variant]="'danger'"
-        (buttonClick)="newSpending()" />
+        (buttonClick)="newSpending()">
+        {{ t('newSpending') }}
+      </app-button>
     </div>
+    <app-headline>{{ t('overview') }}</app-headline>
     <app-filter
+      class="mb-4 block"
       [categories]="categories()"
       [filter]="filter()"
       (filterChange)="filterTransactions($event)"></app-filter>

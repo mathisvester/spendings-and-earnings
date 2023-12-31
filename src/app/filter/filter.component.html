@@ -1,43 +1,47 @@
 <ng-container *transloco="let t">
   @if (filter) {
-    <h2>{{ t('filter') }}</h2>
     <form>
-      <fieldset>
-        <legend>{{ t('date') }}</legend>
-        <div>
-          <label for="month">{{ t('month') }}</label>
-          <select
-            id="month"
-            name="month"
-            [(ngModel)]="filter.month"
-            (ngModelChange)="submit()"
-            required>
-            @for (month of months; track $index) {
-              <option [ngValue]="$index">{{ month }}</option>
-            }
-          </select>
-        </div>
-        <div>
-          <label for="year">{{ t('year') }}</label>
-          <select
-            id="year"
-            name="year"
-            [(ngModel)]="filter.year"
-            (ngModelChange)="submit()"
-            required>
-            @for (year of years; track $index) {
-              <option [ngValue]="year">{{ year }}</option>
-            }
-          </select>
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <app-select-category
-          [(categoryId)]="filter.categoryId"
-          (categoryIdChange)="submit()"
-          [categories]="categories"></app-select-category>
-      </fieldset>
+      <div class="grid grid-cols-2 gap-4">
+        <fieldset>
+          <app-select-category
+            [(categoryId)]="filter.categoryId"
+            (categoryIdChange)="submit()"
+            [categories]="categories"></app-select-category>
+        </fieldset>
+        <fieldset>
+          <legend class="mb-1 block text-sm">{{ t('date') }}</legend>
+          <div class="flex gap-2">
+            <div class="flex-grow">
+              <select
+                class="w-full rounded-md border border-gray-300 px-2 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                id="month"
+                name="month"
+                [(ngModel)]="filter.month"
+                (ngModelChange)="submit()"
+                [attr.aria-label]="t('month')"
+                required>
+                @for (month of months; track $index) {
+                  <option [ngValue]="$index">{{ month }}</option>
+                }
+              </select>
+            </div>
+            <div>
+              <select
+                id="year"
+                class="rounded-md border border-gray-300 px-2 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                name="year"
+                [(ngModel)]="filter.year"
+                (ngModelChange)="submit()"
+                [attr.aria-label]="t('year')"
+                required>
+                @for (year of years; track $index) {
+                  <option [ngValue]="year">{{ year }}</option>
+                }
+              </select>
+            </div>
+          </div>
+        </fieldset>
+      </div>
     </form>
   }
 </ng-container>

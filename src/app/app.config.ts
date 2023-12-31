@@ -19,6 +19,7 @@ import { firstValueFrom } from 'rxjs';
 import { getLocaleCurrencyCode, registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import { LanguageService } from './language.service';
+import { provideNgIconsConfig } from '@ng-icons/core';
 
 export function initializeApp(
   languageService: LanguageService,
@@ -67,5 +68,8 @@ export const appConfig: ApplicationConfig = {
         getLocaleCurrencyCode(languageService.lang),
       deps: [LanguageService],
     },
+    provideNgIconsConfig({
+      size: '1.25em',
+    }),
   ],
 };
