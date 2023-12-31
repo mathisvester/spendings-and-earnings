@@ -12,7 +12,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { NewTransaction } from '../new-transaction';
 import { SelectCategoryComponent } from '../select-category/select-category.component';
 import { Category } from '../category';
-import { DatePipe, JsonPipe, NgIf } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { LocalDateValueAccessor } from 'angular-date-value-accessor';
 import { Transaction } from '../transaction';
 import { TransactionService } from '../transaction.service';
@@ -30,11 +30,9 @@ import { PageComponent } from '../ui/page/page.component';
   imports: [
     FormsModule,
     SelectCategoryComponent,
-    NgIf,
     DatePipe,
     LocalDateValueAccessor,
     TransactionFormComponent,
-    JsonPipe,
     RouterLink,
     TranslocoDirective,
     PageComponent,
