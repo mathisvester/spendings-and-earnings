@@ -14,7 +14,7 @@ import { ButtonComponent } from '../ui/button/button.component';
 import { LabelComponent } from '../ui/label/label.component';
 
 @Component({
-  selector: 'app-new-category',
+  selector: 'app-category',
   standalone: true,
   imports: [
     FormsModule,
@@ -23,10 +23,10 @@ import { LabelComponent } from '../ui/label/label.component';
     ButtonComponent,
     LabelComponent,
   ],
-  templateUrl: './new-category.component.html',
-  styleUrl: './new-category.component.scss',
+  templateUrl: './category.component.html',
+  styleUrl: './category.component.scss',
 })
-export class NewCategoryComponent {
+export class CategoryComponent {
   @ViewChild('f') form!: NgForm;
   @Output() saveCategory = new EventEmitter<NewCategory>();
   @Input() set selectedCategory(category: Category | null) {

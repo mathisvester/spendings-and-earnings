@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, Signal } from '@angular/core';
 import { CategoryListComponent } from '../category-list/category-list.component';
 import { FilterComponent } from '../filter/filter.component';
-import { NewCategoryComponent } from '../new-category/new-category.component';
+import { CategoryComponent } from '../category/category.component';
 import { TransactionListComponent } from '../transaction-list/transaction-list.component';
 import { Category } from '../category';
 import { Transaction } from '../transaction';
@@ -23,7 +23,7 @@ import { HeadlineComponent } from '../ui/headline/headline.component';
     CommonModule,
     TransactionComponent,
     TransactionListComponent,
-    NewCategoryComponent,
+    CategoryComponent,
     FilterComponent,
     CategoryListComponent,
     TranslocoDirective,

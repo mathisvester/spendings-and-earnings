@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, Signal } from '@angular/core';
 import { CategoryListComponent } from '../category-list/category-list.component';
-import { NewCategoryComponent } from '../new-category/new-category.component';
+import { CategoryComponent } from '../category/category.component';
 import { NewCategory } from '../new-category';
 import { Category } from '../category';
 import { isCategory } from '../is-category';
@@ -13,7 +13,7 @@ import { PageComponent } from '../ui/page/page.component';
   standalone: true,
   imports: [
     CategoryListComponent,
-    NewCategoryComponent,
+    CategoryComponent,
     TranslocoDirective,
     PageComponent,
   ],
