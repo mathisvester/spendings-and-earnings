@@ -1,0 +1,6 @@
+<button [routerLink]="['/home']">Home</button>
+<app-transaction-form
+  [type]="transaction()?.type ?? type"
+  [selectedTransaction]="transaction()"
+  [categories]="categories()"
+  (saveTransaction)="saveTransaction($event)"></app-transaction-form>

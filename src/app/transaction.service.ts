@@ -13,21 +13,23 @@ import { filter } from 'rxjs';
 import { Filter } from './filter';
 import { defaultFilter } from './default-filter';
 import { filterTransactions } from './transaction-filter';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TransactionService {
   readonly transactions: Signal<Transaction[]>;
-  readonly selectedTransaction: Signal<Transaction | null>;
+  readonly transaction: Signal<Transaction | null>;
   readonly filter: Signal<Filter>;
   readonly totalEarnings: Signal<number>;
   readonly totalSpendings: Signal<number>;
   private readonly _transactions: WritableSignal<Transaction[]> = signal([]);
-  private readonly _selectedTransactionId: WritableSignal<number | null> =
+  private readonly _transaction: WritableSignal<Transaction | null> =
     signal(null);
   private readonly _filter: WritableSignal<Filter> = signal(defaultFilter());
   private readonly dbService = inject(NgxIndexedDBService);
+  private readonly router = inject(Router);
 
   constructor() {
     this.transactions = computed(() =>
@@ -35,12 +37,7 @@ export class TransactionService {
         (a, b) => +b.date - +a.date
       )
     );
-    this.selectedTransaction = computed(
-      () =>
-        this.transactions().find(
-          transaction => transaction.id === this._selectedTransactionId()
-        ) ?? null
-    );
+    this.transaction = this._transaction.asReadonly();
     this.filter = this._filter.asReadonly();
     this.totalEarnings = computed(() =>
       this.transactions()
@@ -62,9 +59,13 @@ export class TransactionService {
       });
   }
 
-  add(transaction: NewTransaction) {
+  add(transaction: NewTransaction, forward?: string) {
     this.dbService.add('transactions', transaction).subscribe(key => {
       this._transactions.update(transactions => [...transactions, key]);
+
+      if (!!forward) {
+        this.router.navigate([forward]);
+      }
     });
   }
 
@@ -79,20 +80,33 @@ export class TransactionService {
       });
   }
 
-  update(transaction: Transaction) {
+  update(transaction: Transaction, forward?: string) {
     this.dbService.update('transactions', transaction).subscribe(key => {
       this._transactions.update(transactions =>
         transactions.map(t => (t.id === key.id ? key : t))
       );
-      this.selectTransaction(null);
+
+      if (!!forward) {
+        this.router.navigate([forward]);
+      }
     });
   }
 
-  selectTransaction(transactionId: number | null) {
-    this._selectedTransactionId.set(transactionId);
+  loadOne(transactionId: number) {
+    this.dbService
+      .getByID<Transaction | undefined>('transactions', transactionId)
+      .subscribe(transaction => {
+        if (!!transaction) {
+          this._transaction.set(transaction);
+        }
+      });
   }
 
   updateFilter(filter: Filter) {
     this._filter.update(() => filter);
+  }
+
+  clearTransaction() {
+    this._transaction.set(null);
   }
 }

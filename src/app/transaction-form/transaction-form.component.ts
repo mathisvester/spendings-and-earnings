@@ -5,40 +5,27 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { TransactionType } from '../transaction-type';
 import { FormsModule, NgForm } from '@angular/forms';
-import { NewTransaction } from '../new-transaction';
-import { SelectCategoryComponent } from '../select-category/select-category.component';
-import { Category } from '../category';
-import { DatePipe, NgIf } from '@angular/common';
 import { LocalDateValueAccessor } from 'angular-date-value-accessor';
 import { Transaction } from '../transaction';
+import { Category } from '../category';
+import { NewTransaction } from '../new-transaction';
+import { TransactionType } from '../transaction-type';
+import { SelectCategoryComponent } from '../select-category/select-category.component';
 
 @Component({
-  selector: 'app-new-transaction',
+  selector: 'app-transaction-form',
   standalone: true,
-  imports: [
-    FormsModule,
-    SelectCategoryComponent,
-    NgIf,
-    DatePipe,
-    LocalDateValueAccessor,
-  ],
-  templateUrl: './new-transaction.component.html',
-  styleUrl: './new-transaction.component.scss',
+  imports: [FormsModule, LocalDateValueAccessor, SelectCategoryComponent],
+  templateUrl: './transaction-form.component.html',
+  styleUrl: './transaction-form.component.scss',
 })
-export class NewTransactionComponent {
+export class TransactionFormComponent {
   @ViewChild('f') form!: NgForm;
-  @Input({ required: true }) type: TransactionType | undefined;
-  @Input() categories: Category[] = [];
-  @Output() saveTransaction = new EventEmitter<NewTransaction | Transaction>();
   @Input() set selectedTransaction(transaction: Transaction | null) {
     this._selectedTransaction = transaction;
 
-    if (
-      this._selectedTransaction &&
-      this._selectedTransaction.type === this.type
-    ) {
+    if (this._selectedTransaction) {
       this.setFormValue(this._selectedTransaction);
     }
   }
@@ -46,6 +33,10 @@ export class NewTransactionComponent {
   get selectedTransaction(): Transaction | null {
     return this._selectedTransaction;
   }
+
+  @Input() type: TransactionType | undefined;
+  @Input() categories: Category[] = [];
+  @Output() saveTransaction = new EventEmitter<NewTransaction | Transaction>();
 
   date = new Date();
   amount: number = 0;
@@ -72,7 +63,7 @@ export class NewTransactionComponent {
     }
   }
 
-  setFormValue(transaction: Transaction) {
+  private setFormValue(transaction: Transaction) {
     this.date = transaction.date;
     this.amount = transaction.amount;
     if (!!transaction.description) {
