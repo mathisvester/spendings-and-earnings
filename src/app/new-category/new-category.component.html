@@ -1,22 +1,23 @@
-<h2>
-  @if (selectedCategory) {
-    Update
-  } @else {
-    New
-  }
-  category
-</h2>
-<form (ngSubmit)="submit()" #f="ngForm">
-  <fieldset>
-    <label for="title">Title</label>
-    <input
-      type="text"
-      placeholder="Title"
-      id="title"
-      name="title"
-      [(ngModel)]="title"
-      required
-      minlength="4" />
-  </fieldset>
-  <button [disabled]="!f.valid">Save</button>
-</form>
+<ng-container *transloco="let t">
+  <h2>
+    @if (selectedCategory) {
+      {{ t('updateCategory') }}
+    } @else {
+      {{ t('newCategory') }}
+    }
+  </h2>
+  <form (ngSubmit)="submit()" #f="ngForm">
+    <fieldset>
+      <label for="title">{{ t('title') }}</label>
+      <input
+        type="text"
+        [placeholder]="t('title')"
+        id="title"
+        name="title"
+        [(ngModel)]="title"
+        required
+        minlength="4" />
+    </fieldset>
+    <button [disabled]="!f.valid">{{ t('save') }}</button>
+  </form>
+</ng-container>

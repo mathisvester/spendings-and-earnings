@@ -12,7 +12,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { NewTransaction } from '../new-transaction';
 import { SelectCategoryComponent } from '../select-category/select-category.component';
 import { Category } from '../category';
-import { DatePipe, JsonPipe, NgIf } from '@angular/common';
+import { DatePipe, JsonPipe, LowerCasePipe, NgIf } from '@angular/common';
 import { LocalDateValueAccessor } from 'angular-date-value-accessor';
 import { Transaction } from '../transaction';
 import { TransactionService } from '../transaction.service';
@@ -21,6 +21,7 @@ import { CategoryService } from '../category.service';
 import { transactionTypeAttribute } from '../transaction-type-attribute';
 import { TransactionFormComponent } from '../transaction-form/transaction-form.component';
 import { RouterLink } from '@angular/router';
+import { TranslocoDirective } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-transaction',
@@ -34,6 +35,8 @@ import { RouterLink } from '@angular/router';
     TransactionFormComponent,
     JsonPipe,
     RouterLink,
+    LowerCasePipe,
+    TranslocoDirective,
   ],
   templateUrl: './transaction.component.html',
   styleUrl: './transaction.component.scss',

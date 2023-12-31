@@ -1,15 +1,20 @@
-@if (categories.length >= 1) {
-  <ul>
-    @for (category of categories; track category.id) {
-      <li>
-        <p>
-          {{ category.title }}
-        </p>
-        <button (click)="deleteCategory.emit(category.id)">Delete</button
-        ><button (click)="updateCategory.emit(category.id)">Update</button>
-      </li>
-    }
-  </ul>
-} @else {
-  <p>No items</p>
-}
+<ng-container *transloco="let t">
+  @if (categories.length >= 1) {
+    <ul>
+      @for (category of categories; track category.id) {
+        <li>
+          <p>
+            {{ category.title }}
+          </p>
+          <button (click)="deleteCategory.emit(category.id)">
+            {{ t('delete') }}</button
+          ><button (click)="updateCategory.emit(category.id)">
+            {{ t('update') }}
+          </button>
+        </li>
+      }
+    </ul>
+  } @else {
+    <p>{{ t('noItems') }}</p>
+  }
+</ng-container>

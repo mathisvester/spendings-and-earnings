@@ -8,11 +8,12 @@ import {
 import { FormsModule, NgForm } from '@angular/forms';
 import { NewCategory } from '../new-category';
 import { Category } from '../category';
+import { TranslocoDirective } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-new-category',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, TranslocoDirective],
   templateUrl: './new-category.component.html',
   styleUrl: './new-category.component.scss',
 })

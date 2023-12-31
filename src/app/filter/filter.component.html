@@ -1,41 +1,43 @@
-@if (filter) {
-  <h2>Filter</h2>
-  <form>
-    <fieldset>
-      <legend>Date</legend>
-      <div>
-        <label for="month">Month</label>
-        <select
-          id="month"
-          name="month"
-          [(ngModel)]="filter.month"
-          (ngModelChange)="submit()"
-          required>
-          @for (month of months; track $index) {
-            <option [ngValue]="$index">{{ month }}</option>
-          }
-        </select>
-      </div>
-      <div>
-        <label for="year">Year</label>
-        <select
-          id="year"
-          name="year"
-          [(ngModel)]="filter.year"
-          (ngModelChange)="submit()"
-          required>
-          @for (year of years; track $index) {
-            <option [ngValue]="year">{{ year }}</option>
-          }
-        </select>
-      </div>
-    </fieldset>
+<ng-container *transloco="let t">
+  @if (filter) {
+    <h2>{{ t('filter') }}</h2>
+    <form>
+      <fieldset>
+        <legend>{{ t('date') }}</legend>
+        <div>
+          <label for="month">{{ t('month') }}</label>
+          <select
+            id="month"
+            name="month"
+            [(ngModel)]="filter.month"
+            (ngModelChange)="submit()"
+            required>
+            @for (month of months; track $index) {
+              <option [ngValue]="$index">{{ month }}</option>
+            }
+          </select>
+        </div>
+        <div>
+          <label for="year">{{ t('year') }}</label>
+          <select
+            id="year"
+            name="year"
+            [(ngModel)]="filter.year"
+            (ngModelChange)="submit()"
+            required>
+            @for (year of years; track $index) {
+              <option [ngValue]="year">{{ year }}</option>
+            }
+          </select>
+        </div>
+      </fieldset>
 
-    <fieldset>
-      <app-select-category
-        [(categoryId)]="filter.categoryId"
-        (categoryIdChange)="submit()"
-        [categories]="categories"></app-select-category>
-    </fieldset>
-  </form>
-}
+      <fieldset>
+        <app-select-category
+          [(categoryId)]="filter.categoryId"
+          (categoryIdChange)="submit()"
+          [categories]="categories"></app-select-category>
+      </fieldset>
+    </form>
+  }
+</ng-container>

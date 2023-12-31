@@ -12,11 +12,17 @@ import { Category } from '../category';
 import { NewTransaction } from '../new-transaction';
 import { TransactionType } from '../transaction-type';
 import { SelectCategoryComponent } from '../select-category/select-category.component';
+import { TranslocoDirective } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-transaction-form',
   standalone: true,
-  imports: [FormsModule, LocalDateValueAccessor, SelectCategoryComponent],
+  imports: [
+    FormsModule,
+    LocalDateValueAccessor,
+    SelectCategoryComponent,
+    TranslocoDirective,
+  ],
   templateUrl: './transaction-form.component.html',
   styleUrl: './transaction-form.component.scss',
 })

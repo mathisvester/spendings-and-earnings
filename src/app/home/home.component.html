@@ -1,16 +1,24 @@
-<h1>Earnings and spendings</h1>
-<div>
-  <button [routerLink]="['/new-transaction', 'earning']">New earning</button>
-  <button [routerLink]="['/new-transaction', 'spending']">New spending</button>
-  <button [routerLink]="['/settings']">Manage categories</button>
-</div>
-<app-filter
-  [categories]="categories()"
-  [filter]="filter()"
-  (filterChange)="filterTransactions($event)"></app-filter>
-<app-transaction-list
-  [transactions]="transactions()"
-  [totalEarnings]="totalEarnings()"
-  [totalSpendings]="totalSpendings()"
-  (deleteTransaction)="deleteTransaction($event)"
-  (updateTransaction)="updateTransaction($event)"></app-transaction-list>
+<ng-container *transloco="let t">
+  <h1>{{ t('appTitle') }}</h1>
+  <div>
+    <button [routerLink]="['/new-transaction', 'earning']">
+      {{ t('newEarning') }}
+    </button>
+    <button [routerLink]="['/new-transaction', 'spending']">
+      {{ t('newSpending') }}
+    </button>
+    <button [routerLink]="['/settings']">
+      {{ t('manageCategories') }}
+    </button>
+  </div>
+  <app-filter
+    [categories]="categories()"
+    [filter]="filter()"
+    (filterChange)="filterTransactions($event)"></app-filter>
+  <app-transaction-list
+    [transactions]="transactions()"
+    [totalEarnings]="totalEarnings()"
+    [totalSpendings]="totalSpendings()"
+    (deleteTransaction)="deleteTransaction($event)"
+    (updateTransaction)="updateTransaction($event)"></app-transaction-list>
+</ng-container>

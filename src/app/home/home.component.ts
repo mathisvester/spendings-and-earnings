@@ -11,6 +11,7 @@ import { TransactionService } from '../transaction.service';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { TransactionComponent } from '../transaction/transaction.component';
+import { TranslocoDirective } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-home',
@@ -24,6 +25,7 @@ import { TransactionComponent } from '../transaction/transaction.component';
     FilterComponent,
     CategoryListComponent,
     RouterLink,
+    TranslocoDirective,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

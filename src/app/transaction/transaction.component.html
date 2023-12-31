@@ -1,16 +1,23 @@
-<button [routerLink]="['/home']">Home</button>
-<h1>
-  @if (transaction()) {
-    Update
-  } @else {
-    New
-  }
-  @if (type) {
-    {{ type }}
-  }
-</h1>
-<app-transaction-form
-  [type]="transaction()?.type ?? type"
-  [transaction]="transaction()"
-  [categories]="categories()"
-  (saveTransaction)="saveTransaction($event)"></app-transaction-form>
+<ng-container *transloco="let t">
+  <button [routerLink]="['/home']">{{ t('back') }}</button>
+  <h1>
+    @if (transaction()) {
+      @if (transaction()?.type === 'EARNING') {
+        {{ t('updateEarning') }}
+      } @else {
+        {{ t('updateSpending') }}
+      }
+    } @else {
+      @if (type === 'EARNING') {
+        {{ t('newEarning') }}
+      } @else {
+        {{ t('newSpending') }}
+      }
+    }
+  </h1>
+  <app-transaction-form
+    [type]="transaction()?.type ?? type"
+    [transaction]="transaction()"
+    [categories]="categories()"
+    (saveTransaction)="saveTransaction($event)"></app-transaction-form>
+</ng-container>

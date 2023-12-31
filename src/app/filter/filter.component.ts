@@ -9,11 +9,17 @@ import {
   TranslationWidth,
 } from '@angular/common';
 import { Filter } from '../filter';
+import { TranslocoDirective } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-filter',
   standalone: true,
-  imports: [SelectCategoryComponent, FormsModule, DecimalPipe],
+  imports: [
+    SelectCategoryComponent,
+    FormsModule,
+    DecimalPipe,
+    TranslocoDirective,
+  ],
   templateUrl: './filter.component.html',
   styleUrl: './filter.component.scss',
 })

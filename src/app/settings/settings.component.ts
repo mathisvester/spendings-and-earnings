@@ -6,11 +6,17 @@ import { Category } from '../category';
 import { isCategory } from '../is-category';
 import { CategoryService } from '../category.service';
 import { RouterLink } from '@angular/router';
+import { TranslocoDirective } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-settings',
   standalone: true,
-  imports: [CategoryListComponent, NewCategoryComponent, RouterLink],
+  imports: [
+    CategoryListComponent,
+    NewCategoryComponent,
+    RouterLink,
+    TranslocoDirective,
+  ],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss',
 })

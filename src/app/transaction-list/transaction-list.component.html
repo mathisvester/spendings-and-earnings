@@ -1,42 +1,46 @@
-<h2>Overview</h2>
-<p>
-  <span class="text-green">Earnings: {{ totalEarnings | currency }}</span
-  >&nbsp;<span class="text-red"
-    >Spendings: -{{ totalSpendings | currency }}</span
-  >
-</p>
-@if (transactions.length >= 1) {
-  <ul>
-    @for (transaction of transactions; track transaction.id) {
-      <li
-        [ngClass]="{
-          'text-green': transaction.type === 'EARNING',
-          'text-red': transaction.type === 'SPENDING'
-        }">
-        <p>
-          {{ transaction.date | date: 'short' }}
-          @if (transaction.description) {
-            {{ transaction.description }}
-          }
-          @if (transaction.type === 'SPENDING') {
-            -{{ transaction.amount | currency }}
-          } @else {
-            {{ transaction.amount | currency }}
-          }
-          @if (transaction.recurring) {
-            {{ transaction.recurring }}
-          }
-          @if (transaction.categoryId) {
-            Category: {{ transaction.categoryId }}
-          }
-        </p>
-        <button (click)="deleteTransaction.emit(transaction.id)">Delete</button
-        ><button (click)="updateTransaction.emit(transaction.id)">
-          Update
-        </button>
-      </li>
-    }
-  </ul>
-} @else {
-  <p>No items</p>
-}
+<ng-container *transloco="let t">
+  <h2>{{ t('overview') }}</h2>
+  <p>
+    <span class="text-green"
+      >{{ t('earnings') }}: {{ totalEarnings | currency }}</span
+    >&nbsp;<span class="text-red"
+      >{{ t('spendings') }}: -{{ totalSpendings | currency }}</span
+    >
+  </p>
+  @if (transactions.length >= 1) {
+    <ul>
+      @for (transaction of transactions; track transaction.id) {
+        <li
+          [ngClass]="{
+            'text-green': transaction.type === 'EARNING',
+            'text-red': transaction.type === 'SPENDING'
+          }">
+          <p>
+            {{ transaction.date | date: 'short' }}
+            @if (transaction.description) {
+              {{ transaction.description }}
+            }
+            @if (transaction.type === 'SPENDING') {
+              -{{ transaction.amount | currency }}
+            } @else {
+              {{ transaction.amount | currency }}
+            }
+            @if (transaction.recurring) {
+              {{ transaction.recurring }}
+            }
+            @if (transaction.categoryId) {
+              {{ t('category') }}: {{ transaction.categoryId }}
+            }
+          </p>
+          <button (click)="deleteTransaction.emit(transaction.id)">
+            {{ t('delete') }}</button
+          ><button (click)="updateTransaction.emit(transaction.id)">
+            {{ t('update') }}
+          </button>
+        </li>
+      }
+    </ul>
+  } @else {
+    <p>{{ t('noItems') }}</p>
+  }
+</ng-container>
