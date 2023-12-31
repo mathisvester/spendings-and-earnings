@@ -21,10 +21,12 @@ export class TransactionService {
   readonly transactions: Signal<Transaction[]>;
   readonly selectedTransaction: Signal<Transaction | null>;
   readonly filter: Signal<Filter>;
+  readonly totalEarnings: Signal<number>;
+  readonly totalSpendings: Signal<number>;
   private readonly _transactions: WritableSignal<Transaction[]> = signal([]);
   private readonly _selectedTransactionId: WritableSignal<number | null> =
     signal(null);
-  private readonly _filter: WritableSignal<Filter> = signal(defaultFilter);
+  private readonly _filter: WritableSignal<Filter> = signal(defaultFilter());
   private readonly dbService = inject(NgxIndexedDBService);
 
   constructor() {
@@ -40,6 +42,16 @@ export class TransactionService {
         ) ?? null
     );
     this.filter = this._filter.asReadonly();
+    this.totalEarnings = computed(() =>
+      this.transactions()
+        .filter(t => t.type === 'EARNING')
+        .reduce((sum, t) => sum + t.amount, 0)
+    );
+    this.totalSpendings = computed(() =>
+      this.transactions()
+        .filter(t => t.type === 'SPENDING')
+        .reduce((sum, t) => sum + t.amount, 0)
+    );
   }
 
   load() {

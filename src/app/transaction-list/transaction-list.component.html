@@ -1,4 +1,10 @@
 <h2>Overview</h2>
+<p>
+  <span class="text-green">Earnings: {{ totalEarnings | currency }}</span
+  >&nbsp;<span class="text-red"
+    >Spendings: -{{ totalSpendings | currency }}</span
+  >
+</p>
 @if (transactions.length >= 1) {
   <ul>
     @for (transaction of transactions; track transaction.id) {

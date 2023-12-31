@@ -22,5 +22,7 @@
   (filterChange)="filterTransactions($event)"></app-filter>
 <app-transaction-list
   [transactions]="transactions()"
+  [totalEarnings]="totalEarnings()"
+  [totalSpendings]="totalSpendings()"
   (deleteTransaction)="deleteTransaction($event)"
   (updateTransaction)="selectTransaction($event)"></app-transaction-list>
