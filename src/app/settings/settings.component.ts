@@ -7,6 +7,7 @@ import { isCategory } from '../is-category';
 import { CategoryService } from '../category.service';
 import { RouterLink } from '@angular/router';
 import { TranslocoDirective } from '@ngneat/transloco';
+import { PageComponent } from '../ui/page/page.component';
 
 @Component({
   selector: 'app-settings',
@@ -16,6 +17,7 @@ import { TranslocoDirective } from '@ngneat/transloco';
     NewCategoryComponent,
     RouterLink,
     TranslocoDirective,
+    PageComponent,
   ],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss',

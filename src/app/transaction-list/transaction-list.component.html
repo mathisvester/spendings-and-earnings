@@ -1,9 +1,9 @@
 <ng-container *transloco="let t">
   <h2>{{ t('overview') }}</h2>
   <p>
-    <span class="text-green"
+    <span class="text-green-600"
       >{{ t('earnings') }}: {{ totalEarnings | currency }}</span
-    >&nbsp;<span class="text-red"
+    >&nbsp;<span class="text-red-600"
       >{{ t('spendings') }}: -{{ totalSpendings | currency }}</span
     >
   </p>
@@ -12,8 +12,8 @@
       @for (transaction of transactions; track transaction.id) {
         <li
           [ngClass]="{
-            'text-green': transaction.type === 'EARNING',
-            'text-red': transaction.type === 'SPENDING'
+            'text-text-green-600': transaction.type === 'EARNING',
+            'text-red-600': transaction.type === 'SPENDING'
           }">
           <p>
             {{ transaction.date | date: 'short' }}

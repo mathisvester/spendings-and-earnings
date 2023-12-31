@@ -1,0 +1,23 @@
+<div class="min-h-full">
+  <header
+    class="mb-4 flex bg-white px-4 py-4 align-middle shadow"
+    *transloco="let t">
+    @if (showBackButton) {
+      <div class="pr-2">
+        <button [routerLink]="['/home']">{{ t('back') }}</button>
+      </div>
+    }
+    <h1 class="font-medium">{{ title }}</h1>
+    @if (showSettingsButton) {
+      <div class="ms-auto ps-2">
+        <a [routerLink]="['/settings']">
+          {{ t('manageCategories') }}
+        </a>
+      </div>
+    }
+  </header>
+
+  <main class="px-4">
+    <ng-content></ng-content>
+  </main>
+</div>

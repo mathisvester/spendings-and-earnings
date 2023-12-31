@@ -12,6 +12,8 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { TransactionComponent } from '../transaction/transaction.component';
 import { TranslocoDirective } from '@ngneat/transloco';
+import { PageComponent } from '../ui/page/page.component';
+import { ButtonComponent } from '../ui/button/button.component';
 
 @Component({
   selector: 'app-home',
@@ -26,6 +28,8 @@ import { TranslocoDirective } from '@ngneat/transloco';
     CategoryListComponent,
     RouterLink,
     TranslocoDirective,
+    PageComponent,
+    ButtonComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -64,5 +68,13 @@ export class HomeComponent implements OnInit {
 
   filterTransactions(filter: Filter) {
     this.transactionService.updateFilter(filter);
+  }
+
+  newEarning() {
+    this.router.navigate(['/new-transaction', 'earning']);
+  }
+
+  newSpending() {
+    this.router.navigate(['/new-transaction', 'spending']);
   }
 }

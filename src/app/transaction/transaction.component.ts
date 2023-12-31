@@ -12,7 +12,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { NewTransaction } from '../new-transaction';
 import { SelectCategoryComponent } from '../select-category/select-category.component';
 import { Category } from '../category';
-import { DatePipe, JsonPipe, LowerCasePipe, NgIf } from '@angular/common';
+import { DatePipe, JsonPipe, NgIf } from '@angular/common';
 import { LocalDateValueAccessor } from 'angular-date-value-accessor';
 import { Transaction } from '../transaction';
 import { TransactionService } from '../transaction.service';
@@ -21,7 +21,8 @@ import { CategoryService } from '../category.service';
 import { transactionTypeAttribute } from '../transaction-type-attribute';
 import { TransactionFormComponent } from '../transaction-form/transaction-form.component';
 import { RouterLink } from '@angular/router';
-import { TranslocoDirective } from '@ngneat/transloco';
+import { TranslocoDirective, TranslocoService } from '@ngneat/transloco';
+import { PageComponent } from '../ui/page/page.component';
 
 @Component({
   selector: 'app-transaction',
@@ -35,8 +36,8 @@ import { TranslocoDirective } from '@ngneat/transloco';
     TransactionFormComponent,
     JsonPipe,
     RouterLink,
-    LowerCasePipe,
     TranslocoDirective,
+    PageComponent,
   ],
   templateUrl: './transaction.component.html',
   styleUrl: './transaction.component.scss',
@@ -47,16 +48,41 @@ export class TransactionComponent implements OnDestroy {
   type: TransactionType | undefined;
   @Input({ alias: 'transactionId', transform: numberAttribute })
   set transactionId(transactionId: number | undefined) {
+    this._transactionId = transactionId;
+
     if (!!transactionId) {
       this.transactionService.loadOne(transactionId);
+    }
+  }
+
+  get transactionId(): number | undefined {
+    return this._transactionId;
+  }
+
+  get title(): string {
+    if (!!this.transactionId) {
+      if (this.transaction()?.type === 'EARNING') {
+        return this.translocoService.translate('updateEarning');
+      } else {
+        return this.translocoService.translate('updateSpending');
+      }
+    } else {
+      if (this.type === 'EARNING') {
+        return this.translocoService.translate('newEarning');
+      } else {
+        return this.translocoService.translate('newSpending');
+      }
     }
   }
 
   readonly categories: Signal<Category[]>;
   readonly transaction: Signal<Transaction | null>;
 
+  private _transactionId: number | undefined;
+
   private readonly categoryService = inject(CategoryService);
   private readonly transactionService = inject(TransactionService);
+  private readonly translocoService = inject(TranslocoService);
 
   constructor() {
     this.categories = this.categoryService.categories;
