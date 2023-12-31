@@ -1,5 +1,5 @@
 <ng-container *transloco="let t">
-  <label for="category" class="mb-1 block text-sm">{{ t('category') }}</label>
+  <app-label [labelFor]="'category'">{{ t('category') }}</app-label>
   <select
     class="w-full rounded-md border border-gray-300 px-2 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
     id="category"

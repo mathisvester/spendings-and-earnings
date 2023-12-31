@@ -5,7 +5,6 @@ import { NewCategory } from '../new-category';
 import { Category } from '../category';
 import { isCategory } from '../is-category';
 import { CategoryService } from '../category.service';
-import { RouterLink } from '@angular/router';
 import { TranslocoDirective } from '@ngneat/transloco';
 import { PageComponent } from '../ui/page/page.component';
 
@@ -15,7 +14,6 @@ import { PageComponent } from '../ui/page/page.component';
   imports: [
     CategoryListComponent,
     NewCategoryComponent,
-    RouterLink,
     TranslocoDirective,
     PageComponent,
   ],

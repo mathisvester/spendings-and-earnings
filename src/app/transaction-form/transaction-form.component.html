@@ -1,7 +1,7 @@
 <ng-container *transloco="let t">
   <form (ngSubmit)="submit()" #f="ngForm">
-    <fieldset>
-      <label for="date">{{ t('date') }}</label>
+    <fieldset class="mb-4">
+      <app-label [labelFor]="'date'">{{ t('date') }}</app-label>
       <input
         type="date"
         [placeholder]="t('date')"
@@ -12,8 +12,8 @@
         required />
     </fieldset>
 
-    <fieldset>
-      <label for="amount">{{ t('amount') }}</label>
+    <fieldset class="mb-4">
+      <app-label [labelFor]="'amount'">{{ t('amount') }}</app-label>
       <input
         type="number"
         [placeholder]="t('amount')"
@@ -24,8 +24,8 @@
         required />
     </fieldset>
 
-    <fieldset>
-      <label for="description">{{ t('description') }}</label>
+    <fieldset class="mb-4">
+      <app-label [labelFor]="'description'">{{ t('description') }}</app-label>
       <textarea
         id="description"
         name="description"
@@ -33,8 +33,8 @@
         maxlength="250"></textarea>
     </fieldset>
 
-    <fieldset>
-      <legend>{{ t('recurring') }}</legend>
+    <fieldset class="mb-4">
+      <legend class="mb-1 block text-sm">{{ t('recurring') }}</legend>
       <div>
         <input
           type="radio"
@@ -43,7 +43,6 @@
           value="MONTHLY"
           [(ngModel)]="recurring" />
         <label for="recurringMonthly">{{ t('monthly') }}</label>
-
         <input
           type="radio"
           id="recurringYearly"
@@ -54,7 +53,7 @@
       </div>
     </fieldset>
 
-    <fieldset>
+    <fieldset class="mb-4" t>
       <app-select-category
         [(categoryId)]="categoryId"
         [categories]="categories"></app-select-category>

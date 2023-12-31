@@ -9,7 +9,7 @@ import { Filter } from '../filter';
 import { CategoryService } from '../category.service';
 import { TransactionService } from '../transaction.service';
 import { CommonModule } from '@angular/common';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
 import { TransactionComponent } from '../transaction/transaction.component';
 import { TranslocoDirective } from '@ngneat/transloco';
 import { PageComponent } from '../ui/page/page.component';
@@ -21,13 +21,11 @@ import { HeadlineComponent } from '../ui/headline/headline.component';
   standalone: true,
   imports: [
     CommonModule,
-    RouterOutlet,
     TransactionComponent,
     TransactionListComponent,
     NewCategoryComponent,
     FilterComponent,
     CategoryListComponent,
-    RouterLink,
     TranslocoDirective,
     PageComponent,
     ButtonComponent,

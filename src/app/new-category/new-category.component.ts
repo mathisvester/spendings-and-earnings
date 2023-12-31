@@ -11,6 +11,7 @@ import { Category } from '../category';
 import { TranslocoDirective } from '@ngneat/transloco';
 import { HeadlineComponent } from '../ui/headline/headline.component';
 import { ButtonComponent } from '../ui/button/button.component';
+import { LabelComponent } from '../ui/label/label.component';
 
 @Component({
   selector: 'app-new-category',
@@ -20,6 +21,7 @@ import { ButtonComponent } from '../ui/button/button.component';
     TranslocoDirective,
     HeadlineComponent,
     ButtonComponent,
+    LabelComponent,
   ],
   templateUrl: './new-category.component.html',
   styleUrl: './new-category.component.scss',

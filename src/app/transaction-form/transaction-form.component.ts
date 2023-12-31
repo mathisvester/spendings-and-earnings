@@ -14,6 +14,7 @@ import { TransactionType } from '../transaction-type';
 import { SelectCategoryComponent } from '../select-category/select-category.component';
 import { TranslocoDirective } from '@ngneat/transloco';
 import { ButtonComponent } from '../ui/button/button.component';
+import { LabelComponent } from '../ui/label/label.component';
 
 @Component({
   selector: 'app-transaction-form',
@@ -24,6 +25,7 @@ import { ButtonComponent } from '../ui/button/button.component';
     SelectCategoryComponent,
     TranslocoDirective,
     ButtonComponent,
+    LabelComponent,
   ],
   templateUrl: './transaction-form.component.html',
   styleUrl: './transaction-form.component.scss',

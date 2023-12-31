@@ -20,7 +20,6 @@ import { isTransaction } from '../is-transaction';
 import { CategoryService } from '../category.service';
 import { transactionTypeAttribute } from '../transaction-type-attribute';
 import { TransactionFormComponent } from '../transaction-form/transaction-form.component';
-import { RouterLink } from '@angular/router';
 import { TranslocoDirective, TranslocoService } from '@ngneat/transloco';
 import { PageComponent } from '../ui/page/page.component';
 
@@ -33,7 +32,6 @@ import { PageComponent } from '../ui/page/page.component';
     DatePipe,
     LocalDateValueAccessor,
     TransactionFormComponent,
-    RouterLink,
     TranslocoDirective,
     PageComponent,
   ],
