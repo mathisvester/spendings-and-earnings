@@ -12,6 +12,7 @@ import { TranslocoDirective } from '@ngneat/transloco';
 import { PageComponent } from '../page/page.component';
 import { HeadlineDirective } from '../headline.directive';
 import { ButtonDirective } from '../button.directive';
+import { TransactionSummaryComponent } from '../transaction-summary/transaction-summary.component';
 
 @Component({
   selector: 'app-home',
@@ -25,6 +26,7 @@ import { ButtonDirective } from '../button.directive';
     HeadlineDirective,
     RouterLink,
     ButtonDirective,
+    TransactionSummaryComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

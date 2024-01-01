@@ -1,6 +1,6 @@
 <ng-container *transloco="let t">
   <app-page [title]="t('appTitle')" [showBackButton]="false">
-    <div class="mb-5 grid grid-cols-2 gap-4">
+    <div class="mb-6 grid grid-cols-2 gap-4">
       <button
         class="w-full"
         appButton
@@ -16,7 +16,12 @@
         {{ t('newSpending') }}
       </button>
     </div>
-    <h2 appHeadline>{{ t('overview') }}</h2>
+    <h2 appHeadline class="mb-3">{{ t('overview') }}</h2>
+    <app-transaction-summary
+      [totalEarnings]="totalEarnings()"
+      [totalSpendings]="totalSpendings()"
+      [filter]="filter()">
+    </app-transaction-summary>
     <app-filter
       class="mb-5 block"
       [categories]="categories()"
@@ -24,8 +29,6 @@
       (filterChange)="filterTransactions($event)"></app-filter>
     <app-transaction-list
       [transactions]="transactions()"
-      [totalEarnings]="totalEarnings()"
-      [totalSpendings]="totalSpendings()"
       (deleteTransaction)="deleteTransaction($event)"
       (updateTransaction)="updateTransaction($event)"></app-transaction-list>
   </app-page>

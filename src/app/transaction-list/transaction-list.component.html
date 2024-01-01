@@ -1,25 +1,25 @@
 <ng-container *transloco="let t">
-  <div class="mb-4 grid grid-cols-2 gap-4">
-    <span class="text-green-600"
-      >{{ t('earnings') }}: {{ totalEarnings | currency }}</span
-    ><span class="text-red-600"
-      >{{ t('spendings') }}: -{{ totalSpendings | currency }}</span
-    >
-  </div>
   @if (transactions.length >= 1) {
     <ul
-      class="divide-y divide-gray-100 rounded-md border border-gray-300 bg-white">
+      class="divide-y divide-gray-200 rounded-md border border-gray-200 bg-white shadow-sm">
       @for (transaction of transactions; track transaction.id) {
-        <li class="grid auto-cols-max grid-flow-col gap-4 px-3 py-2">
-          <div class="col-span-full">
-            <p class="mb-0.5 text-xs text-gray-500">
-              {{ transaction.date | date: 'short' }}
+        <li
+          class="grid grid-cols-[1fr_auto_auto] items-center gap-4 px-4 py-3.5">
+          <div>
+            <p class="mb-1 text-xs text-gray-500">
+              {{ transaction.date | date: 'shortDate' }}
+              @if (transaction.recurring) {
+                {{ transaction.recurring }}
+              }
+              @if (transaction.categoryId) {
+                {{ t('category') }}: {{ transaction.categoryId }}
+              }
             </p>
             <p class="font-semibold text-gray-900">
               {{ transaction.description ?? '-' }}
             </p>
           </div>
-          <div class="col-auto">
+          <div>
             @if (transaction.type === 'SPENDING') {
               <span class="text-red-600"
                 >-{{ transaction.amount | currency }}</span
@@ -29,14 +29,8 @@
                 transaction.amount | currency
               }}</span>
             }
-            @if (transaction.recurring) {
-              {{ transaction.recurring }}
-            }
-            @if (transaction.categoryId) {
-              {{ t('category') }}: {{ transaction.categoryId }}
-            }
           </div>
-          <div class="col-auto">
+          <div>
             <button
               appButton
               (click)="deleteTransaction.emit(transaction.id)"

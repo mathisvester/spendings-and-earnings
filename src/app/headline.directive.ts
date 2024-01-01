@@ -5,5 +5,5 @@ import { Directive, HostBinding } from '@angular/core';
   standalone: true,
 })
 export class HeadlineDirective {
-  @HostBinding('class') class = 'mb-4 text-2xl font-medium';
+  @HostBinding('class') class = 'text-2xl font-medium';
 }

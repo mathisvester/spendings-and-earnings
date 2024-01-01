@@ -22,8 +22,6 @@ import { ButtonDirective } from '../button.directive';
 })
 export class TransactionListComponent {
   @Input() transactions: Transaction[] = [];
-  @Input() totalEarnings = 0;
-  @Input() totalSpendings = 0;
   @Output() deleteTransaction = new EventEmitter<number>();
   @Output() updateTransaction = new EventEmitter<number>();
 }
