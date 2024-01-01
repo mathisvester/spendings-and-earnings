@@ -38,10 +38,12 @@
           </div>
           <div class="col-auto">
             <button
+              appButton
               (click)="deleteTransaction.emit(transaction.id)"
               [attr.aria-label]="t('delete')">
               <ng-icon name="heroTrash"></ng-icon></button
             ><button
+              appButton
               (click)="updateTransaction.emit(transaction.id)"
               [attr.aria-label]="t('update')">
               <ng-icon name="heroPencilSquare"></ng-icon>
