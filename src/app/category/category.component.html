@@ -7,7 +7,7 @@
     }
   </h2>
   <form (ngSubmit)="submit()" #f="ngForm">
-    <fieldset class="mb-5">
+    <fieldset class="mb-6">
       <label appLabel for="title">{{ t('title') }}</label>
       <input
         appInput
@@ -19,7 +19,7 @@
         required
         minlength="4" />
     </fieldset>
-    <button appButton [disabled]="!f.valid" [color]="'primary'">
+    <button appButton class="w-full" [disabled]="!f.valid" [color]="'primary'">
       {{ t('save') }}
     </button>
   </form>

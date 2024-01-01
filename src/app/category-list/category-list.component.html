@@ -1,22 +1,26 @@
 <ng-container *transloco="let t">
   @if (categories.length >= 1) {
-    <ul>
+    <ul
+      class="divide-y divide-gray-200 rounded-md border border-gray-200 bg-white shadow-sm">
       @for (category of categories; track category.id) {
-        <li>
-          <p>
+        <li
+          class="grid grid-cols-[1fr_auto_auto] items-center gap-4 px-4 py-3.5">
+          <p class="font-semibold text-gray-900">
             {{ category.title }}
           </p>
-          <button
-            appButton
-            (click)="deleteCategory.emit(category.id)"
-            [attr.aria-label]="t('delete')">
-            <ng-icon name="heroTrash"></ng-icon></button
-          ><button
-            appButton
-            (click)="updateCategory.emit(category.id)"
-            [attr.aria-label]="t('update')">
-            <ng-icon name="heroPencilSquare"></ng-icon>
-          </button>
+          <div>
+            <button
+              appButton
+              (click)="deleteCategory.emit(category.id)"
+              [attr.aria-label]="t('delete')">
+              <ng-icon name="heroTrash"></ng-icon></button
+            ><button
+              appButton
+              (click)="updateCategory.emit(category.id)"
+              [attr.aria-label]="t('update')">
+              <ng-icon name="heroPencilSquare"></ng-icon>
+            </button>
+          </div>
         </li>
       }
     </ul>
