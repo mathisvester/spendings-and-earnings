@@ -15,6 +15,7 @@ import { SelectCategoryComponent } from '../select-category/select-category.comp
 import { TranslocoDirective } from '@ngneat/transloco';
 import { ButtonComponent } from '../ui/button/button.component';
 import { LabelComponent } from '../ui/label/label.component';
+import { InputDirective } from '../input.directive';
 
 @Component({
   selector: 'app-transaction-form',
@@ -26,6 +27,7 @@ import { LabelComponent } from '../ui/label/label.component';
     TranslocoDirective,
     ButtonComponent,
     LabelComponent,
+    InputDirective,
   ],
   templateUrl: './transaction-form.component.html',
   styleUrl: './transaction-form.component.scss',

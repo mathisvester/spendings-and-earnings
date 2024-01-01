@@ -1,6 +1,7 @@
 <ng-container *transloco="let t">
-  <app-page [title]="t('manageCategories')" [showSettingsButton]="false">
+  <app-page [title]="t('manageCategories')">
     <app-category
+      class="mb-5 block"
       [selectedCategory]="selectedCategory()"
       (saveCategory)="saveCategory($event)"></app-category>
     <app-category-list

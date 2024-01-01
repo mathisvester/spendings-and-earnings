@@ -9,11 +9,14 @@
             [categories]="categories"></app-select-category>
         </fieldset>
         <fieldset>
-          <legend class="mb-1 block text-sm">{{ t('date') }}</legend>
+          <legend
+            class="mb-2 block text-sm font-medium leading-6 text-gray-900">
+            {{ t('date') }}
+          </legend>
           <div class="flex gap-2">
             <div class="flex-grow">
               <select
-                class="w-full rounded-md border border-gray-300 px-2 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                class="w-full rounded-md border border-gray-300 px-2 py-2 shadow-sm focus:border-indigo-600 focus:ring-indigo-500 sm:text-sm"
                 id="month"
                 name="month"
                 [(ngModel)]="filter.month"
@@ -28,7 +31,7 @@
             <div>
               <select
                 id="year"
-                class="rounded-md border border-gray-300 px-2 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                class="rounded-md border border-gray-300 px-2 py-2 shadow-sm focus:border-indigo-600 focus:ring-indigo-500 sm:text-sm"
                 name="year"
                 [(ngModel)]="filter.year"
                 (ngModelChange)="submit()"

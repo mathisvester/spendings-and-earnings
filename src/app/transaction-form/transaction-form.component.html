@@ -1,8 +1,9 @@
 <ng-container *transloco="let t">
   <form (ngSubmit)="submit()" #f="ngForm">
-    <fieldset class="mb-4">
+    <fieldset class="mb-5">
       <app-label [labelFor]="'date'">{{ t('date') }}</app-label>
       <input
+        appInput
         type="date"
         [placeholder]="t('date')"
         id="date"
@@ -12,55 +13,69 @@
         required />
     </fieldset>
 
-    <fieldset class="mb-4">
+    <fieldset class="mb-5">
       <app-label [labelFor]="'amount'">{{ t('amount') }}</app-label>
       <input
+        appInput
         type="number"
         [placeholder]="t('amount')"
         id="amount"
         name="amount"
         [(ngModel)]="amount"
+        inputmode="decimal"
         min="0.01"
         required />
     </fieldset>
 
-    <fieldset class="mb-4">
+    <fieldset class="mb-5">
       <app-label [labelFor]="'description'">{{ t('description') }}</app-label>
       <textarea
+        appInput
         id="description"
         name="description"
         [(ngModel)]="description"
         maxlength="250"></textarea>
     </fieldset>
 
-    <fieldset class="mb-4">
-      <legend class="mb-1 block text-sm">{{ t('recurring') }}</legend>
-      <div>
-        <input
-          type="radio"
-          id="recurringMonthly"
-          name="recurringMonthly"
-          value="MONTHLY"
-          [(ngModel)]="recurring" />
-        <label for="recurringMonthly">{{ t('monthly') }}</label>
-        <input
-          type="radio"
-          id="recurringYearly"
-          name="recurringYearly"
-          value="YEARLY"
-          [(ngModel)]="recurring" />
-        <label for="recurringYearly">{{ t('yearly') }}</label>
+    <fieldset class="mb-5">
+      <legend class="mb-2 block text-sm font-medium leading-6 text-gray-900">
+        {{ t('recurring') }}
+      </legend>
+      <div class="grid auto-cols-max grid-flow-col gap-4">
+        <div>
+          <input
+            type="radio"
+            id="recurringMonthly"
+            name="recurringMonthly"
+            value="MONTHLY"
+            [(ngModel)]="recurring" />
+          <label for="recurringMonthly" class="ms-1.5">{{
+            t('monthly')
+          }}</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            id="recurringYearly"
+            name="recurringYearly"
+            value="YEARLY"
+            [(ngModel)]="recurring" />
+          <label for="recurringYearly" class="ms-1.5">{{ t('yearly') }}</label>
+        </div>
       </div>
     </fieldset>
 
-    <fieldset class="mb-4" t>
+    <fieldset class="mb-6">
       <app-select-category
         [(categoryId)]="categoryId"
         [categories]="categories"></app-select-category>
     </fieldset>
 
-    <app-button [disabled]="!f.valid" [variant]="'primary'">{{
-      t('save')
-    }}</app-button>
+    <app-button
+      [disabled]="!f.valid"
+      [variant]="'primary'"
+      [fullWidth]="true"
+      >{{ t('save') }}</app-button
+    >
   </form>
 </ng-container>

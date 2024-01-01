@@ -7,22 +7,27 @@
     >
   </div>
   @if (transactions.length >= 1) {
-    <ul>
+    <ul
+      class="divide-y divide-gray-100 rounded-md border border-gray-300 bg-white">
       @for (transaction of transactions; track transaction.id) {
-        <li
-          [ngClass]="{
-            'text-text-green-600': transaction.type === 'EARNING',
-            'text-red-600': transaction.type === 'SPENDING'
-          }">
-          <p>
-            {{ transaction.date | date: 'short' }}
-            @if (transaction.description) {
-              {{ transaction.description }}
-            }
+        <li class="grid auto-cols-max grid-flow-col gap-4 px-3 py-2">
+          <div class="col-span-full">
+            <p class="mb-0.5 text-xs text-gray-500">
+              {{ transaction.date | date: 'short' }}
+            </p>
+            <p class="font-semibold text-gray-900">
+              {{ transaction.description ?? '-' }}
+            </p>
+          </div>
+          <div class="col-auto">
             @if (transaction.type === 'SPENDING') {
-              -{{ transaction.amount | currency }}
+              <span class="text-red-600"
+                >-{{ transaction.amount | currency }}</span
+              >
             } @else {
-              {{ transaction.amount | currency }}
+              <span class="text-green-600">{{
+                transaction.amount | currency
+              }}</span>
             }
             @if (transaction.recurring) {
               {{ transaction.recurring }}
@@ -30,16 +35,18 @@
             @if (transaction.categoryId) {
               {{ t('category') }}: {{ transaction.categoryId }}
             }
-          </p>
-          <app-button
-            (buttonClick)="deleteTransaction.emit(transaction.id)"
-            [ariaLabel]="t('delete')">
-            <ng-icon name="heroTrash"></ng-icon></app-button
-          ><app-button
-            (buttonClick)="updateTransaction.emit(transaction.id)"
-            [ariaLabel]="t('update')">
-            <ng-icon name="heroPencilSquare"></ng-icon>
-          </app-button>
+          </div>
+          <div class="col-auto">
+            <app-button
+              (buttonClick)="deleteTransaction.emit(transaction.id)"
+              [ariaLabel]="t('delete')">
+              <ng-icon name="heroTrash"></ng-icon></app-button
+            ><app-button
+              (buttonClick)="updateTransaction.emit(transaction.id)"
+              [ariaLabel]="t('update')">
+              <ng-icon name="heroPencilSquare"></ng-icon>
+            </app-button>
+          </div>
         </li>
       }
     </ul>

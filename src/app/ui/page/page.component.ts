@@ -16,7 +16,6 @@ import { heroArrowLeft, heroCog6Tooth } from '@ng-icons/heroicons/outline';
 export class PageComponent {
   @Input({ required: true }) title = '';
   @Input() showBackButton = true;
-  @Input() showSettingsButton = true;
 
   private readonly router = inject(Router);
 

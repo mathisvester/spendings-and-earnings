@@ -7,9 +7,10 @@
     }
   </app-headline>
   <form (ngSubmit)="submit()" #f="ngForm">
-    <fieldset class="mb-4">
+    <fieldset class="mb-5">
       <app-label [labelFor]="'title'">{{ t('title') }}</app-label>
       <input
+        appInput
         type="text"
         [placeholder]="t('title')"
         id="title"
