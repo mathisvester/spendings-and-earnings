@@ -1,11 +1,11 @@
 <ng-container *transloco="let t">
-  <app-headline>
+  <h2 appHeadline>
     @if (selectedCategory) {
       {{ t('updateCategory') }}
     } @else {
       {{ t('newCategory') }}
     }
-  </app-headline>
+  </h2>
   <form (ngSubmit)="submit()" #f="ngForm">
     <fieldset class="mb-5">
       <label appLabel for="title">{{ t('title') }}</label>

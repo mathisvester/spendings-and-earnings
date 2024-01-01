@@ -5,7 +5,6 @@ import { TranslocoDirective } from '@ngneat/transloco';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { heroPencilSquare, heroTrash } from '@ng-icons/heroicons/outline';
 import { ButtonComponent } from '../ui/button/button.component';
-import { HeadlineComponent } from '../ui/headline/headline.component';
 
 @Component({
   selector: 'app-transaction-list',
@@ -17,7 +16,6 @@ import { HeadlineComponent } from '../ui/headline/headline.component';
     TranslocoDirective,
     NgIcon,
     ButtonComponent,
-    HeadlineComponent,
   ],
   templateUrl: './transaction-list.component.html',
   styleUrl: './transaction-list.component.scss',
