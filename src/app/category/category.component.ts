@@ -9,10 +9,10 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { NewCategory } from '../new-category';
 import { Category } from '../category';
 import { TranslocoDirective } from '@ngneat/transloco';
-import { ButtonComponent } from '../ui/button/button.component';
 import { InputDirective } from '../input.directive';
 import { LabelDirective } from '../label.directive';
 import { HeadlineDirective } from '../headline.directive';
+import { ButtonDirective } from '../button.directive';
 
 @Component({
   selector: 'app-category',
@@ -20,10 +20,10 @@ import { HeadlineDirective } from '../headline.directive';
   imports: [
     FormsModule,
     TranslocoDirective,
-    ButtonComponent,
     InputDirective,
     LabelDirective,
     HeadlineDirective,
+    ButtonDirective,
   ],
   templateUrl: './category.component.html',
   styleUrl: './category.component.scss',

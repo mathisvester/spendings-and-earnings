@@ -6,15 +6,17 @@
           <p>
             {{ category.title }}
           </p>
-          <app-button
-            (buttonClick)="deleteCategory.emit(category.id)"
-            [ariaLabel]="t('delete')">
-            <ng-icon name="heroTrash"></ng-icon></app-button
-          ><app-button
-            (buttonClick)="updateCategory.emit(category.id)"
-            [ariaLabel]="t('update')">
+          <button
+            appButton
+            (click)="deleteCategory.emit(category.id)"
+            [attr.aria-label]="t('delete')">
+            <ng-icon name="heroTrash"></ng-icon></button
+          ><button
+            appButton
+            (click)="updateCategory.emit(category.id)"
+            [attr.aria-label]="t('update')">
             <ng-icon name="heroPencilSquare"></ng-icon>
-          </app-button>
+          </button>
         </li>
       }
     </ul>

@@ -71,11 +71,8 @@
         [categories]="categories"></app-select-category>
     </fieldset>
 
-    <app-button
-      [disabled]="!f.valid"
-      [variant]="'primary'"
-      [fullWidth]="true"
-      >{{ t('save') }}</app-button
-    >
+    <button appButton [disabled]="!f.valid" [color]="'primary'">
+      {{ t('save') }}
+    </button>
   </form>
 </ng-container>

@@ -37,15 +37,15 @@
             }
           </div>
           <div class="col-auto">
-            <app-button
-              (buttonClick)="deleteTransaction.emit(transaction.id)"
-              [ariaLabel]="t('delete')">
-              <ng-icon name="heroTrash"></ng-icon></app-button
-            ><app-button
-              (buttonClick)="updateTransaction.emit(transaction.id)"
-              [ariaLabel]="t('update')">
+            <button
+              (click)="deleteTransaction.emit(transaction.id)"
+              [attr.aria-label]="t('delete')">
+              <ng-icon name="heroTrash"></ng-icon></button
+            ><button
+              (click)="updateTransaction.emit(transaction.id)"
+              [attr.aria-label]="t('update')">
               <ng-icon name="heroPencilSquare"></ng-icon>
-            </app-button>
+            </button>
           </div>
         </li>
       }

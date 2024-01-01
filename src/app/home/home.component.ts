@@ -1,7 +1,5 @@
 import { Component, inject, OnInit, Signal } from '@angular/core';
-import { CategoryListComponent } from '../category-list/category-list.component';
 import { FilterComponent } from '../filter/filter.component';
-import { CategoryComponent } from '../category/category.component';
 import { TransactionListComponent } from '../transaction-list/transaction-list.component';
 import { Category } from '../category';
 import { Transaction } from '../transaction';
@@ -9,27 +7,24 @@ import { Filter } from '../filter';
 import { CategoryService } from '../category.service';
 import { TransactionService } from '../transaction.service';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
-import { TransactionComponent } from '../transaction/transaction.component';
+import { Router, RouterLink } from '@angular/router';
 import { TranslocoDirective } from '@ngneat/transloco';
-import { PageComponent } from '../ui/page/page.component';
-import { ButtonComponent } from '../ui/button/button.component';
+import { PageComponent } from '../page/page.component';
 import { HeadlineDirective } from '../headline.directive';
+import { ButtonDirective } from '../button.directive';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
     CommonModule,
-    TransactionComponent,
     TransactionListComponent,
-    CategoryComponent,
     FilterComponent,
-    CategoryListComponent,
     TranslocoDirective,
     PageComponent,
-    ButtonComponent,
     HeadlineDirective,
+    RouterLink,
+    ButtonDirective,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -68,13 +63,5 @@ export class HomeComponent implements OnInit {
 
   filterTransactions(filter: Filter) {
     this.transactionService.updateFilter(filter);
-  }
-
-  newEarning() {
-    this.router.navigate(['/new-transaction', 'earning']);
-  }
-
-  newSpending() {
-    this.router.navigate(['/new-transaction', 'spending']);
   }
 }

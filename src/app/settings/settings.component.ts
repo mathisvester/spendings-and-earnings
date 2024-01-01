@@ -6,7 +6,7 @@ import { Category } from '../category';
 import { isCategory } from '../is-category';
 import { CategoryService } from '../category.service';
 import { TranslocoDirective } from '@ngneat/transloco';
-import { PageComponent } from '../ui/page/page.component';
+import { PageComponent } from '../page/page.component';
 
 @Component({
   selector: 'app-settings',

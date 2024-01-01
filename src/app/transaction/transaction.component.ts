@@ -21,7 +21,7 @@ import { CategoryService } from '../category.service';
 import { transactionTypeAttribute } from '../transaction-type-attribute';
 import { TransactionFormComponent } from '../transaction-form/transaction-form.component';
 import { TranslocoDirective, TranslocoService } from '@ngneat/transloco';
-import { PageComponent } from '../ui/page/page.component';
+import { PageComponent } from '../page/page.component';
 
 @Component({
   selector: 'app-transaction',

@@ -4,18 +4,22 @@
     *transloco="let t">
     @if (showBackButton) {
       <div class="pr-1">
-        <app-button [ariaLabel]="t('back')" (buttonClick)="navigateToHome()"
-          ><ng-icon name="heroArrowLeft"></ng-icon
-        ></app-button>
+        <button
+          appButton
+          [attr.aria-label]="t('back')"
+          [routerLink]="['/home']">
+          <ng-icon name="heroArrowLeft"></ng-icon>
+        </button>
       </div>
     }
     <h1 class="font-medium text-gray-900">{{ title }}</h1>
     <div class="ms-auto ps-1">
-      <app-button
-        [ariaLabel]="t('manageCategories')"
-        (buttonClick)="navigateToSettings()"
-        ><ng-icon name="heroCog6Tooth"></ng-icon
-      ></app-button>
+      <button
+        appButton
+        [attr.aria-label]="t('manageCategories')"
+        [routerLink]="['/settings']">
+        <ng-icon name="heroCog6Tooth"></ng-icon>
+      </button>
     </div>
   </header>
 

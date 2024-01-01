@@ -19,8 +19,8 @@
         required
         minlength="4" />
     </fieldset>
-    <app-button [disabled]="!f.valid" [variant]="'primary'">{{
-      t('save')
-    }}</app-button>
+    <button appButton [disabled]="!f.valid" [color]="'primary'">
+      {{ t('save') }}
+    </button>
   </form>
 </ng-container>

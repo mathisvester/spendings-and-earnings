@@ -13,9 +13,9 @@ import { NewTransaction } from '../new-transaction';
 import { TransactionType } from '../transaction-type';
 import { SelectCategoryComponent } from '../select-category/select-category.component';
 import { TranslocoDirective } from '@ngneat/transloco';
-import { ButtonComponent } from '../ui/button/button.component';
 import { InputDirective } from '../input.directive';
 import { LabelDirective } from '../label.directive';
+import { ButtonDirective } from '../button.directive';
 
 @Component({
   selector: 'app-transaction-form',
@@ -25,9 +25,9 @@ import { LabelDirective } from '../label.directive';
     LocalDateValueAccessor,
     SelectCategoryComponent,
     TranslocoDirective,
-    ButtonComponent,
     InputDirective,
     LabelDirective,
+    ButtonDirective,
   ],
   templateUrl: './transaction-form.component.html',
   styleUrl: './transaction-form.component.scss',
