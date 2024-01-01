@@ -2,12 +2,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Category } from '../category';
 import { FormsModule } from '@angular/forms';
 import { TranslocoDirective } from '@ngneat/transloco';
-import { LabelComponent } from '../ui/label/label.component';
+import { LabelDirective } from '../label.directive';
 
 @Component({
   selector: 'app-select-category',
   standalone: true,
-  imports: [FormsModule, TranslocoDirective, LabelComponent],
+  imports: [FormsModule, TranslocoDirective, LabelDirective],
   templateUrl: './select-category.component.html',
   styleUrl: './select-category.component.scss',
 })

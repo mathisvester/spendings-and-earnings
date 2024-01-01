@@ -1,7 +1,7 @@
 <ng-container *transloco="let t">
   <form (ngSubmit)="submit()" #f="ngForm">
     <fieldset class="mb-5">
-      <app-label [labelFor]="'date'">{{ t('date') }}</app-label>
+      <label appLabel for="date">{{ t('date') }}</label>
       <input
         appInput
         type="date"
@@ -14,7 +14,7 @@
     </fieldset>
 
     <fieldset class="mb-5">
-      <app-label [labelFor]="'amount'">{{ t('amount') }}</app-label>
+      <label appLabel for="amount">{{ t('amount') }}</label>
       <input
         appInput
         type="number"
@@ -28,7 +28,7 @@
     </fieldset>
 
     <fieldset class="mb-5">
-      <app-label [labelFor]="'description'">{{ t('description') }}</app-label>
+      <label appLabel for="description">{{ t('description') }}</label>
       <textarea
         appInput
         id="description"
