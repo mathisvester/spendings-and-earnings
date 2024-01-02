@@ -1,14 +1,8 @@
 <ng-container *transloco="let t">
   <div
     class="mb-6 rounded-md border border-gray-200 bg-white px-4 py-3.5 shadow-sm">
-    <div class="grid grid-cols-8 gap-4">
-      <div class="col-span-4">
-        <span class="mb-1 block text-xs text-gray-500">{{ t('date') }}</span>
-        <span class="block text-xl font-medium">{{
-          currentDate | date: 'MMMM YYYY'
-        }}</span>
-      </div>
-      <div class="col-span-2">
+    <div class="grid grid-cols-2 gap-4">
+      <div>
         <span class="mb-1 block text-xs text-gray-500">{{
           t('earnings')
         }}</span>
@@ -16,7 +10,7 @@
           totalEarnings | currency
         }}</span>
       </div>
-      <div class="col-span-2">
+      <div>
         <span class="mb-1 block text-xs text-gray-500">{{
           t('spendings')
         }}</span>

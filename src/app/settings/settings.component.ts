@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, Signal } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, Signal } from '@angular/core';
 import { CategoryListComponent } from '../category-list/category-list.component';
 import { CategoryComponent } from '../category/category.component';
 import { NewCategory } from '../new-category';
@@ -20,7 +20,7 @@ import { PageComponent } from '../page/page.component';
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss',
 })
-export class SettingsComponent implements OnInit {
+export class SettingsComponent implements OnInit, OnDestroy {
   readonly categories: Signal<Category[]>;
   readonly selectedCategory: Signal<Category | null>;
 
@@ -33,6 +33,10 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit() {
     this.categoryService.load();
+  }
+
+  ngOnDestroy() {
+    this.selectCategory(null);
   }
 
   saveCategory(category: NewCategory | Category) {

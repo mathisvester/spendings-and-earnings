@@ -6,14 +6,24 @@ export function filterTransactions(
   filter: Filter
 ): Transaction[] {
   return transactions.filter(t => {
-    const dateFilter =
-      t.date.getMonth() === filter.month &&
-      t.date.getFullYear() === filter.year;
-
     if (filter.categoryId === null) {
-      return dateFilter;
+      return dateFilter(t, filter);
     } else {
-      return dateFilter && t.categoryId === filter.categoryId;
+      return dateFilter(t, filter) && t.categoryId === filter.categoryId;
     }
   });
+}
+
+function dateFilter(t: Transaction, filter: Filter): boolean {
+  const monthFilter = t.date.getMonth() === filter.month;
+  const yearFilter = t.date.getFullYear() === filter.year;
+
+  switch (t.interval) {
+    case 'MONTHLY':
+      return true;
+    case 'YEARLY':
+      return monthFilter;
+    default:
+      return monthFilter && yearFilter;
+  }
 }
