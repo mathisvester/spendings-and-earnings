@@ -16,6 +16,7 @@ import { TranslocoDirective } from '@ngneat/transloco';
 import { InputDirective } from '../input.directive';
 import { LabelDirective } from '../label.directive';
 import { ButtonDirective } from '../button.directive';
+import { TransactionInterval } from '../transaction-interval';
 
 @Component({
   selector: 'app-transaction-form',
@@ -54,7 +55,7 @@ export class TransactionFormComponent {
   amount: number = 0;
   description = '';
   categoryId: number | null = null;
-  recurring: 'MONTHLY' | 'YEARLY' | null = null;
+  interval: TransactionInterval = 'ONE_TIME';
 
   private _transaction: Transaction | null = null;
 
@@ -67,7 +68,7 @@ export class TransactionFormComponent {
         amount: this.amount,
         ...(this.description && { description: this.description }),
         categoryId: this.categoryId,
-        ...(!!this.recurring && { recurring: this.recurring }),
+        interval: this.interval,
       };
 
       this.saveTransaction.emit(transaction);
@@ -84,8 +85,6 @@ export class TransactionFormComponent {
     if (!!transaction.categoryId) {
       this.categoryId = transaction.categoryId;
     }
-    if (!!transaction.recurring) {
-      this.recurring = transaction.recurring;
-    }
+    this.interval = transaction.interval;
   }
 }

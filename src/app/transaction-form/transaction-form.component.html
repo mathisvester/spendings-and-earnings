@@ -39,28 +39,35 @@
 
     <fieldset class="mb-5">
       <legend class="mb-2 block text-sm font-medium leading-6 text-gray-900">
-        {{ t('recurring') }}
+        {{ t('interval') }}
       </legend>
       <div class="grid auto-cols-max grid-flow-col gap-4">
         <div>
           <input
             type="radio"
-            id="recurringMonthly"
-            name="recurringMonthly"
-            value="MONTHLY"
-            [(ngModel)]="recurring" />
-          <label for="recurringMonthly" class="ms-1.5">{{
-            t('monthly')
-          }}</label>
+            id="intervalOneTime"
+            name="intervalOneTime"
+            [value]="'ONE_TIME'"
+            [(ngModel)]="interval" />
+          <label for="intervalOneTime" class="ms-1.5">{{ t('oneTime') }}</label>
         </div>
         <div>
           <input
             type="radio"
-            id="recurringYearly"
-            name="recurringYearly"
-            value="YEARLY"
-            [(ngModel)]="recurring" />
-          <label for="recurringYearly" class="ms-1.5">{{ t('yearly') }}</label>
+            id="intervalMonthly"
+            name="intervalMonthly"
+            [value]="'MONTHLY'"
+            [(ngModel)]="interval" />
+          <label for="intervalMonthly" class="ms-1.5">{{ t('monthly') }}</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            id="intervalYearly"
+            name="intervalYearly"
+            [value]="'YEARLY'"
+            [(ngModel)]="interval" />
+          <label for="intervalYearly" class="ms-1.5">{{ t('yearly') }}</label>
         </div>
       </div>
     </fieldset>

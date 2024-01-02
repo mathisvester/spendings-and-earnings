@@ -30,6 +30,7 @@
       (filterChange)="filterTransactions($event)"></app-filter>
     <app-transaction-list
       [transactions]="transactions()"
+      [categories]="categories()"
       (deleteTransaction)="deleteTransaction($event)"
       (updateTransaction)="updateTransaction($event)"></app-transaction-list>
   </app-page>

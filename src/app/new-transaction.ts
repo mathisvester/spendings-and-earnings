@@ -1,4 +1,5 @@
 import { TransactionType } from './transaction-type';
+import { TransactionInterval } from './transaction-interval';
 
 export interface NewTransaction {
   type: TransactionType;
@@ -6,5 +7,5 @@ export interface NewTransaction {
   amount: number;
   description?: string;
   categoryId: number | null;
-  recurring?: 'MONTHLY' | 'YEARLY';
+  interval: TransactionInterval;
 }

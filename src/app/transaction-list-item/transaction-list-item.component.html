@@ -1,0 +1,38 @@
+<ng-container *transloco="let t">
+  <li class="grid grid-cols-[1fr_auto_auto] items-center gap-4 px-4 py-3.5">
+    <div>
+      <p class="mb-1 text-xs text-gray-500">
+        {{ transaction.date | date: 'shortDate' }}
+        @if (transaction.interval !== 'ONE_TIME') {
+          &#x2022; {{ transaction.interval | lowercase | transloco }}
+        }
+        @if (category) {
+          &#x2022; {{ category.title }}
+        }
+      </p>
+      <p class="font-semibold text-gray-900">
+        {{ transaction.description ?? '-' }}
+      </p>
+    </div>
+    <div>
+      @if (transaction.type === 'SPENDING') {
+        <span class="text-red-600">-{{ transaction.amount | currency }}</span>
+      } @else {
+        <span class="text-green-600">{{ transaction.amount | currency }}</span>
+      }
+    </div>
+    <div>
+      <button
+        appButton
+        (click)="deleteTransaction.emit(transaction.id)"
+        [attr.aria-label]="t('delete')">
+        <ng-icon name="heroTrash"></ng-icon></button
+      ><button
+        appButton
+        (click)="updateTransaction.emit(transaction.id)"
+        [attr.aria-label]="t('update')">
+        <ng-icon name="heroPencilSquare"></ng-icon>
+      </button>
+    </div>
+  </li>
+</ng-container>

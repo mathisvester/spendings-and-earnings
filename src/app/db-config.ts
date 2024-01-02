@@ -21,7 +21,7 @@ export const dbConfig: DBConfig = {
           keypath: 'categoryId',
           options: { unique: false },
         },
-        { name: 'recurring', keypath: 'recurring', options: { unique: false } },
+        { name: 'interval', keypath: 'interval', options: { unique: false } },
       ],
     },
     {

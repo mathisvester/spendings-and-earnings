@@ -38,7 +38,7 @@ export class CategoryComponent {
 
     if (this._selectedCategory) {
       this.setFormValue(this._selectedCategory);
-      setTimeout(() => this.titleInput.nativeElement.focus());
+      setTimeout(() => this.titleInput.nativeElement?.focus());
     }
   }
 
