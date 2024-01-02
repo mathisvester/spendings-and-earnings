@@ -16,7 +16,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { TranslocoHttpLoader } from './transloco-loader';
 import { provideTransloco, TranslocoService } from '@ngneat/transloco';
 import { firstValueFrom } from 'rxjs';
-import { getLocaleCurrencyCode, registerLocaleData } from '@angular/common';
+import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
 import { LanguageService } from './language.service';
 import { provideNgIconsConfig } from '@ng-icons/core';
@@ -65,7 +65,7 @@ export const appConfig: ApplicationConfig = {
     {
       provide: DEFAULT_CURRENCY_CODE,
       useFactory: (languageService: LanguageService) =>
-        getLocaleCurrencyCode(languageService.lang),
+        languageService.localeCurrencyCode,
       deps: [LanguageService],
     },
     provideNgIconsConfig({

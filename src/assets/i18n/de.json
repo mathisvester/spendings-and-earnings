@@ -16,6 +16,7 @@
   "selectCategory": "Kategorie auswählen",
   "back": "Zurück",
   "amount": "Betrag",
+  "amountPlaceholder": "0.01",
   "description": "Beschreibung",
   "interval": "Intervall",
   "oneTime": "Einmalig",

@@ -22,6 +22,7 @@ import { transactionTypeAttribute } from '../transaction-type-attribute';
 import { TransactionFormComponent } from '../transaction-form/transaction-form.component';
 import { TranslocoDirective, TranslocoService } from '@ngneat/transloco';
 import { PageComponent } from '../page/page.component';
+import { LanguageService } from '../language.service';
 
 @Component({
   selector: 'app-transaction',
@@ -73,16 +74,19 @@ export class TransactionComponent implements OnDestroy {
 
   readonly categories: Signal<Category[]>;
   readonly transaction: Signal<Transaction | null>;
+  readonly currencySymbol: string;
 
   private _transactionId: number | undefined;
 
   private readonly categoryService = inject(CategoryService);
   private readonly transactionService = inject(TransactionService);
   private readonly translocoService = inject(TranslocoService);
+  private readonly languageService = inject(LanguageService);
 
   constructor() {
     this.categories = this.categoryService.categories;
     this.transaction = this.transactionService.transaction;
+    this.currencySymbol = this.languageService.currencySymbol;
   }
 
   saveTransaction(transaction: NewTransaction | Transaction) {

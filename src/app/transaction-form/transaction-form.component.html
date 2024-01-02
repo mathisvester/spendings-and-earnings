@@ -15,16 +15,27 @@
 
     <fieldset class="mb-5">
       <label appLabel for="amount">{{ t('amount') }}</label>
-      <input
-        appInput
-        type="number"
-        [placeholder]="t('amount')"
-        id="amount"
-        name="amount"
-        [(ngModel)]="amount"
-        inputmode="decimal"
-        min="0.01"
-        required />
+
+      <div class="relative mt-2 rounded-md shadow-sm">
+        @if (currencySymbol) {
+          <div
+            class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+            <span class="text-gray-500 sm:text-sm">{{ currencySymbol }}</span>
+          </div>
+        }
+        <input
+          appInput
+          class="pl-7"
+          type="number"
+          [placeholder]="t('amountPlaceholder')"
+          id="amount"
+          name="amount"
+          [(ngModel)]="amount"
+          inputmode="decimal"
+          min="0.01"
+          required
+          #inputAmount />
+      </div>
     </fieldset>
 
     <fieldset class="mb-5">

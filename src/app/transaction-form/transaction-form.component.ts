@@ -1,5 +1,6 @@
 import {
   Component,
+  ElementRef,
   EventEmitter,
   Input,
   Output,
@@ -17,6 +18,7 @@ import { InputDirective } from '../input.directive';
 import { LabelDirective } from '../label.directive';
 import { ButtonDirective } from '../button.directive';
 import { TransactionInterval } from '../transaction-interval';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-transaction-form',
@@ -29,11 +31,13 @@ import { TransactionInterval } from '../transaction-interval';
     InputDirective,
     LabelDirective,
     ButtonDirective,
+    CurrencyPipe,
   ],
   templateUrl: './transaction-form.component.html',
   styleUrl: './transaction-form.component.scss',
 })
 export class TransactionFormComponent {
+  @ViewChild('inputAmount') inputAmount!: ElementRef;
   @ViewChild('f') form!: NgForm;
   @Input() set transaction(transaction: Transaction | null) {
     this._transaction = transaction;
@@ -41,6 +45,8 @@ export class TransactionFormComponent {
     if (this._transaction) {
       this.setFormValue(this._transaction);
     }
+
+    setTimeout(() => this.inputAmount.nativeElement?.focus());
   }
 
   get transaction(): Transaction | null {
@@ -49,10 +55,11 @@ export class TransactionFormComponent {
 
   @Input() type: TransactionType | undefined;
   @Input() categories: Category[] = [];
+  @Input() currencySymbol = '';
   @Output() saveTransaction = new EventEmitter<NewTransaction | Transaction>();
 
   date = new Date();
-  amount: number = 0;
+  amount: number | null = null;
   description = '';
   categoryId: number | null = null;
   interval: TransactionInterval = 'ONE_TIME';
@@ -60,7 +67,7 @@ export class TransactionFormComponent {
   private _transaction: Transaction | null = null;
 
   submit() {
-    if (this.type) {
+    if (this.type && this.amount) {
       const transaction: NewTransaction | Transaction = {
         ...(this.transaction && { id: this.transaction.id }),
         type: this.type,

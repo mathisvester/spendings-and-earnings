@@ -4,6 +4,7 @@
       [type]="transaction()?.type ?? type"
       [transaction]="transaction()"
       [categories]="categories()"
+      [currencySymbol]="currencySymbol"
       (saveTransaction)="saveTransaction($event)"></app-transaction-form>
   </app-page>
 </ng-container>
