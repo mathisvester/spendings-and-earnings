@@ -1,6 +1,41 @@
 <ng-container *transloco="let t">
   <form (ngSubmit)="submit()" #f="ngForm">
     <fieldset class="mb-5">
+      <legend class="mb-2 block text-sm font-medium leading-6 text-gray-900">
+        {{ t('interval') }}
+      </legend>
+      <div class="grid auto-cols-max grid-flow-col gap-4">
+        <div>
+          <input
+            type="radio"
+            id="intervalOneTime"
+            name="intervalOneTime"
+            [value]="'ONE_TIME'"
+            [(ngModel)]="interval" />
+          <label for="intervalOneTime" class="ms-1.5">{{ t('oneTime') }}</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            id="intervalMonthly"
+            name="intervalMonthly"
+            [value]="'MONTHLY'"
+            [(ngModel)]="interval" />
+          <label for="intervalMonthly" class="ms-1.5">{{ t('monthly') }}</label>
+        </div>
+        <div>
+          <input
+            type="radio"
+            id="intervalYearly"
+            name="intervalYearly"
+            [value]="'YEARLY'"
+            [(ngModel)]="interval" />
+          <label for="intervalYearly" class="ms-1.5">{{ t('yearly') }}</label>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset class="mb-5">
       <label appLabel for="date">{{ t('date') }}</label>
       <input
         appInput
@@ -11,6 +46,13 @@
         [(ngModel)]="date"
         useValueAsLocalDate
         required />
+      @if (interval === 'MONTHLY' || interval === 'YEARLY') {
+        <span class="mt-2 block text-xs leading-4 text-gray-500"
+          >Wenn als Intervall monatlich oder jährlich ausgewählt ist, werden
+          Schaltjahre oder Tage die in anderen Monaten nicht vorkommen,
+          automatisch auf den letzten Tag des Monats angepasst.</span
+        >
+      }
     </fieldset>
 
     <fieldset class="mb-5">
@@ -45,41 +87,6 @@
         name="description"
         [(ngModel)]="description"
         maxlength="250"></textarea>
-    </fieldset>
-
-    <fieldset class="mb-5">
-      <legend class="mb-2 block text-sm font-medium leading-6 text-gray-900">
-        {{ t('interval') }}
-      </legend>
-      <div class="grid auto-cols-max grid-flow-col gap-4">
-        <div>
-          <input
-            type="radio"
-            id="intervalOneTime"
-            name="intervalOneTime"
-            [value]="'ONE_TIME'"
-            [(ngModel)]="interval" />
-          <label for="intervalOneTime" class="ms-1.5">{{ t('oneTime') }}</label>
-        </div>
-        <div>
-          <input
-            type="radio"
-            id="intervalMonthly"
-            name="intervalMonthly"
-            [value]="'MONTHLY'"
-            [(ngModel)]="interval" />
-          <label for="intervalMonthly" class="ms-1.5">{{ t('monthly') }}</label>
-        </div>
-        <div>
-          <input
-            type="radio"
-            id="intervalYearly"
-            name="intervalYearly"
-            [value]="'YEARLY'"
-            [(ngModel)]="interval" />
-          <label for="intervalYearly" class="ms-1.5">{{ t('yearly') }}</label>
-        </div>
-      </div>
     </fieldset>
 
     <fieldset class="mb-6">

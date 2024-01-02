@@ -30,6 +30,7 @@
     <app-transaction-list
       [transactions]="transactions()"
       [categories]="categories()"
+      [filter]="filter()"
       (deleteTransaction)="deleteTransaction($event)"
       (updateTransaction)="updateTransaction($event)"></app-transaction-list>
   </app-page>

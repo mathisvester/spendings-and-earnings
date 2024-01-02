@@ -2,7 +2,7 @@
   <li class="grid grid-cols-[1fr_auto_auto] items-center gap-4 px-4 py-3.5">
     <div>
       <p class="mb-1 text-xs text-gray-500">
-        {{ transaction.date | date: 'shortDate' }}
+        {{ date | date: 'shortDate' }}
         @if (transaction.interval !== 'ONE_TIME') {
           &#x2022; {{ transaction.interval | lowercase | transloco }}
         }

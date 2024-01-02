@@ -30,5 +30,6 @@
   "updateCategory": "Update category",
   "newCategory": "New category",
   "updateEarning": "Update earning",
-  "updateSpending": "Update spending"
+  "updateSpending": "Update spending",
+  "dateHint": "When set to a monthly or yearly interval, leap years or days that do not occur in other months are automatically adjusted to the last day of the month."
 }

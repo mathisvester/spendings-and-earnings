@@ -5,6 +5,8 @@ import { provideIcons } from '@ng-icons/core';
 import { heroPencilSquare, heroTrash } from '@ng-icons/heroicons/outline';
 import { TransactionListItemComponent } from '../transaction-list-item/transaction-list-item.component';
 import { Category } from '../category';
+import { Filter } from '../filter';
+import { defaultFilter } from '../default-filter';
 
 @Component({
   selector: 'app-transaction-list',
@@ -17,6 +19,7 @@ import { Category } from '../category';
 export class TransactionListComponent {
   @Input({ required: true }) transactions!: Transaction[];
   @Input({ required: true }) categories!: Category[];
+  @Input() filter: Filter = defaultFilter();
   @Output() deleteTransaction = new EventEmitter<number>();
   @Output() updateTransaction = new EventEmitter<number>();
 }

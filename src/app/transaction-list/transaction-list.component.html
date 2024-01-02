@@ -6,6 +6,7 @@
         <app-transaction-list-item
           [transaction]="transaction"
           [categories]="categories"
+          [filter]="filter"
           (deleteTransaction)="deleteTransaction.emit($event)"
           (updateTransaction)="
             updateTransaction.emit($event)
