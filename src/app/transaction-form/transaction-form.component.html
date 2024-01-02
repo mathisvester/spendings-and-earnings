@@ -47,11 +47,9 @@
         useValueAsLocalDate
         required />
       @if (interval === 'MONTHLY' || interval === 'YEARLY') {
-        <span class="mt-2 block text-xs leading-4 text-gray-500"
-          >Wenn als Intervall monatlich oder jährlich ausgewählt ist, werden
-          Schaltjahre oder Tage die in anderen Monaten nicht vorkommen,
-          automatisch auf den letzten Tag des Monats angepasst.</span
-        >
+        <span class="mt-2 block text-xs leading-4 text-gray-500">{{
+          t('dateHint')
+        }}</span>
       }
     </fieldset>
 
