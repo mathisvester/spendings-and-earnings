@@ -23,8 +23,8 @@
                 (ngModelChange)="submit()"
                 [attr.aria-label]="t('month')"
                 required>
-                @for (month of months; track $index) {
-                  <option [ngValue]="$index">{{ month }}</option>
+                @for (monthName of monthNames; track $index) {
+                  <option [ngValue]="$index">{{ monthName }}</option>
                 }
               </select>
             </div>

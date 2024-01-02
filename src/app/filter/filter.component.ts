@@ -2,12 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Category } from '../category';
 import { SelectCategoryComponent } from '../select-category/select-category.component';
 import { FormsModule } from '@angular/forms';
-import {
-  DecimalPipe,
-  FormStyle,
-  getLocaleMonthNames,
-  TranslationWidth,
-} from '@angular/common';
+import { DecimalPipe } from '@angular/common';
 import { Filter } from '../filter';
 import { TranslocoDirective } from '@ngneat/transloco';
 
@@ -26,6 +21,7 @@ import { TranslocoDirective } from '@ngneat/transloco';
 export class FilterComponent {
   @Input() categories: Category[] = [];
   @Input({ required: true }) filter!: Filter;
+  @Input({ required: true }) monthNames!: readonly string[];
   @Output() filterChange = new EventEmitter<Filter>();
 
   get years() {
@@ -38,12 +34,6 @@ export class FilterComponent {
 
     return years;
   }
-
-  readonly months = getLocaleMonthNames(
-    'en-US',
-    FormStyle.Format,
-    TranslationWidth.Wide
-  );
 
   submit() {
     this.filterChange.emit({ ...this.filter });

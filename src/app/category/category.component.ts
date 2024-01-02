@@ -1,5 +1,6 @@
 import {
   Component,
+  ElementRef,
   EventEmitter,
   Input,
   Output,
@@ -29,6 +30,7 @@ import { ButtonDirective } from '../button.directive';
   styleUrl: './category.component.scss',
 })
 export class CategoryComponent {
+  @ViewChild('titleInput') titleInput!: ElementRef;
   @ViewChild('f') form!: NgForm;
   @Output() saveCategory = new EventEmitter<NewCategory>();
   @Input() set selectedCategory(category: Category | null) {
@@ -36,6 +38,7 @@ export class CategoryComponent {
 
     if (this._selectedCategory) {
       this.setFormValue(this._selectedCategory);
+      setTimeout(() => this.titleInput.nativeElement.focus());
     }
   }
 

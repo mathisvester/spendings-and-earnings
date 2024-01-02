@@ -13,6 +13,7 @@ import { PageComponent } from '../page/page.component';
 import { HeadlineDirective } from '../headline.directive';
 import { ButtonDirective } from '../button.directive';
 import { TransactionSummaryComponent } from '../transaction-summary/transaction-summary.component';
+import { LanguageService } from '../language.service';
 
 @Component({
   selector: 'app-home',
@@ -37,9 +38,11 @@ export class HomeComponent implements OnInit {
   readonly filter: Signal<Filter>;
   readonly totalEarnings: Signal<number>;
   readonly totalSpendings: Signal<number>;
+  readonly monthNames: readonly string[];
 
   private readonly categoryService = inject(CategoryService);
   private readonly transactionService = inject(TransactionService);
+  private readonly languageService = inject(LanguageService);
   private readonly router = inject(Router);
 
   constructor() {
@@ -48,6 +51,7 @@ export class HomeComponent implements OnInit {
     this.filter = this.transactionService.filter;
     this.totalEarnings = this.transactionService.totalEarnings;
     this.totalSpendings = this.transactionService.totalSpendings;
+    this.monthNames = this.languageService.localeMonthNames;
   }
 
   ngOnInit() {

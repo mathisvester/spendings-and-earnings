@@ -26,6 +26,7 @@
       class="mb-5 block"
       [categories]="categories()"
       [filter]="filter()"
+      [monthNames]="monthNames"
       (filterChange)="filterTransactions($event)"></app-filter>
     <app-transaction-list
       [transactions]="transactions()"

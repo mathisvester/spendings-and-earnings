@@ -17,7 +17,8 @@
         name="title"
         [(ngModel)]="title"
         required
-        minlength="4" />
+        minlength="4"
+        #titleInput />
     </fieldset>
     <button appButton class="w-full" [disabled]="!f.valid" [color]="'primary'">
       {{ t('save') }}
