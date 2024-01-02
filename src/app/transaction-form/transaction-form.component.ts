@@ -63,14 +63,18 @@ export class TransactionFormComponent {
   submit() {
     if (this.type && this.amount) {
       const transaction: NewTransaction | Transaction = {
-        ...(this.transaction && { id: this.transaction.id }),
+        ...(this.transaction && { ...this.transaction }),
         type: this.type,
         date: this.date,
         amount: this.amount,
-        ...(this.description && { description: this.description }),
+        description: this.description,
         categoryId: this.categoryId,
         interval: this.interval,
       };
+
+      if (!this.description) {
+        delete transaction.description;
+      }
 
       this.saveTransaction.emit(transaction);
       this.form.reset({ date: new Date() });

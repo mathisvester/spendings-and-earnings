@@ -39,8 +39,15 @@ export class CategoryService {
     });
   }
 
-  add(category: NewCategory) {
-    this.dbService.add('categories', category).subscribe(key => {
+  create(createCategory: NewCategory) {
+    const transaction: Omit<Category, 'id'> = {
+      ...createCategory,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      version: 1,
+    };
+
+    this.dbService.add('categories', transaction).subscribe(key => {
       this._categories.update(categories => [...categories, key]);
     });
   }
@@ -56,7 +63,13 @@ export class CategoryService {
       });
   }
 
-  update(category: Category) {
+  update(updateCategory: Category) {
+    const category: Category = {
+      ...updateCategory,
+      updatedAt: new Date(),
+      version: updateCategory.version + 1,
+    };
+
     this.dbService.update('categories', category).subscribe(key => {
       this._categories.update(categories =>
         categories.map(c => (c.id === key.id ? key : c))

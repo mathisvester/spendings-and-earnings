@@ -1,4 +1,10 @@
-import { DBConfig } from 'ngx-indexed-db';
+import { DBConfig, ObjectStoreSchema } from 'ngx-indexed-db';
+
+const baseObjectStoreSchema: ObjectStoreSchema[] = [
+  { name: 'createdAt', keypath: 'createdAt', options: { unique: false } },
+  { name: 'updatedAt', keypath: 'updatedAt', options: { unique: false } },
+  { name: 'version', keypath: 'version', options: { unique: false } },
+];
 
 export const dbConfig: DBConfig = {
   name: 'SpendingsAndEarningsDb',
@@ -8,6 +14,7 @@ export const dbConfig: DBConfig = {
       store: 'transactions',
       storeConfig: { keyPath: 'id', autoIncrement: true },
       storeSchema: [
+        ...baseObjectStoreSchema,
         { name: 'type', keypath: 'type', options: { unique: false } },
         { name: 'date', keypath: 'date', options: { unique: false } },
         { name: 'amount', keypath: 'amount', options: { unique: false } },
@@ -28,6 +35,7 @@ export const dbConfig: DBConfig = {
       store: 'categories',
       storeConfig: { keyPath: 'id', autoIncrement: true },
       storeSchema: [
+        ...baseObjectStoreSchema,
         { name: 'title', keypath: 'title', options: { unique: false } },
       ],
     },

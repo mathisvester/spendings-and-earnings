@@ -93,7 +93,7 @@ export class TransactionComponent implements OnDestroy {
     if (isTransaction(transaction)) {
       this.transactionService.update(transaction, '/');
     } else {
-      this.transactionService.add(transaction, '/');
+      this.transactionService.create(transaction, '/');
     }
   }
 

@@ -52,7 +52,7 @@ export class CategoryComponent {
 
   submit() {
     const category: Category | NewCategory = {
-      ...(this.selectedCategory && { id: this.selectedCategory.id }),
+      ...(this.selectedCategory && { ...this.selectedCategory }),
       title: this.title,
     };
 

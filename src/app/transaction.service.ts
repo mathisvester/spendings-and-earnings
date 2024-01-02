@@ -59,7 +59,14 @@ export class TransactionService {
       });
   }
 
-  add(transaction: NewTransaction, forward?: string) {
+  create(createTransaction: NewTransaction, forward?: string) {
+    const transaction: Omit<Transaction, 'id'> = {
+      ...createTransaction,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      version: 1,
+    };
+
     this.dbService.add('transactions', transaction).subscribe(key => {
       this._transactions.update(transactions => [...transactions, key]);
 
@@ -80,7 +87,13 @@ export class TransactionService {
       });
   }
 
-  update(transaction: Transaction, forward?: string) {
+  update(updateTransaction: Transaction, forward?: string) {
+    const transaction: Transaction = {
+      ...updateTransaction,
+      updatedAt: new Date(),
+      version: updateTransaction.version + 1,
+    };
+
     this.dbService.update('transactions', transaction).subscribe(key => {
       this._transactions.update(transactions =>
         transactions.map(t => (t.id === key.id ? key : t))

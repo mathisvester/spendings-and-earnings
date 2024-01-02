@@ -43,7 +43,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
     if (isCategory(category)) {
       this.categoryService.update(category);
     } else {
-      this.categoryService.add(category);
+      this.categoryService.create(category);
     }
   }
 

@@ -1,4 +1,4 @@
 import { NewCategory } from './new-category';
-import { WithID } from 'ngx-indexed-db';
+import { BaseEntry } from './base-entry';
 
-export type Category = NewCategory & WithID;
+export type Category = NewCategory & BaseEntry;

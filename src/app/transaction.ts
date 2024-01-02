@@ -1,4 +1,4 @@
 import { NewTransaction } from './new-transaction';
-import { WithID } from 'ngx-indexed-db';
+import { BaseEntry } from './base-entry';
 
-export type Transaction = NewTransaction & WithID;
+export type Transaction = NewTransaction & BaseEntry;
