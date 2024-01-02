@@ -24,7 +24,7 @@ export class LanguageService {
     );
   }
 
-  get localeCurrencyCode(): string {
+  get localeCurrencyCode() {
     return getLocaleCurrencyCode(this.lang) as string;
   }
 
