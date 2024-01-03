@@ -15,32 +15,42 @@
           </legend>
           <div class="flex gap-2">
             <div class="flex-grow">
-              <select
-                class="w-full rounded-md border border-gray-300 px-2 py-2 shadow-sm focus:border-indigo-600 focus:ring-indigo-500 sm:text-sm"
-                id="month"
-                name="month"
-                [(ngModel)]="filter.month"
-                (ngModelChange)="submit()"
-                [attr.aria-label]="t('month')"
-                required>
-                @for (monthName of monthNames; track $index) {
-                  <option [ngValue]="$index">{{ monthName }}</option>
-                }
-              </select>
+              <div class="grid">
+                <ng-icon
+                  name="heroChevronDown"
+                  class="pointer-events-none relative right-2 z-10 col-start-1 row-start-1 self-center justify-self-end"></ng-icon>
+                <select
+                  id="month"
+                  class="col-start-1 row-start-1 w-full appearance-none rounded-md border border-gray-300 py-2 pe-7 ps-2 shadow-sm focus:border-indigo-600 focus:ring-indigo-500"
+                  name="month"
+                  [(ngModel)]="filter.month"
+                  (ngModelChange)="submit()"
+                  [attr.aria-label]="t('month')"
+                  required>
+                  @for (monthName of monthNames; track $index) {
+                    <option [ngValue]="$index">{{ monthName }}</option>
+                  }
+                </select>
+              </div>
             </div>
             <div>
-              <select
-                id="year"
-                class="rounded-md border border-gray-300 px-2 py-2 shadow-sm focus:border-indigo-600 focus:ring-indigo-500 sm:text-sm"
-                name="year"
-                [(ngModel)]="filter.year"
-                (ngModelChange)="submit()"
-                [attr.aria-label]="t('year')"
-                required>
-                @for (year of years; track $index) {
-                  <option [ngValue]="year">{{ year }}</option>
-                }
-              </select>
+              <div class="grid">
+                <ng-icon
+                  name="heroChevronDown"
+                  class="pointer-events-none relative right-2 z-10 col-start-1 row-start-1 self-center justify-self-end"></ng-icon>
+                <select
+                  id="year"
+                  class="col-start-1 row-start-1 w-full appearance-none rounded-md border border-gray-300 py-2 pe-7 ps-2 shadow-sm focus:border-indigo-600 focus:ring-indigo-500"
+                  name="year"
+                  [(ngModel)]="filter.year"
+                  (ngModelChange)="submit()"
+                  [attr.aria-label]="t('year')"
+                  required>
+                  @for (year of years; track $index) {
+                    <option [ngValue]="year">{{ year }}</option>
+                  }
+                </select>
+              </div>
             </div>
           </div>
         </fieldset>

@@ -3,7 +3,7 @@
     class="mb-4 flex items-center bg-white px-4 py-4 shadow"
     *transloco="let t">
     @if (showBackButton) {
-      <div class="pr-1">
+      <div class="-ms-3 pr-1">
         <button
           appButton
           [attr.aria-label]="t('back')"
@@ -12,8 +12,11 @@
         </button>
       </div>
     }
-    <h1 class="font-medium text-gray-900">{{ title }}</h1>
-    <div class="ms-auto ps-1">
+    <h1
+      class="overflow-hidden text-ellipsis whitespace-nowrap text-lg font-medium text-gray-900">
+      {{ title }}
+    </h1>
+    <div class="-me-3 ms-auto ps-1">
       <button
         appButton
         [attr.aria-label]="t('manageCategories')"

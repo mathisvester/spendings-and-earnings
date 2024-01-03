@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { DecimalPipe } from '@angular/common';
 import { Filter } from '../filter';
 import { TranslocoDirective } from '@ngneat/transloco';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { heroChevronDown } from '@ng-icons/heroicons/outline';
 
 @Component({
   selector: 'app-filter',
@@ -14,9 +16,11 @@ import { TranslocoDirective } from '@ngneat/transloco';
     FormsModule,
     DecimalPipe,
     TranslocoDirective,
+    NgIcon,
   ],
   templateUrl: './filter.component.html',
   styleUrl: './filter.component.scss',
+  providers: provideIcons({ heroChevronDown }),
 })
 export class FilterComponent {
   @Input() categories: Category[] = [];

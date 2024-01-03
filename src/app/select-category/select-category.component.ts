@@ -3,13 +3,16 @@ import { Category } from '../category';
 import { FormsModule } from '@angular/forms';
 import { TranslocoDirective } from '@ngneat/transloco';
 import { LabelDirective } from '../label.directive';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { heroChevronDown } from '@ng-icons/heroicons/outline';
 
 @Component({
   selector: 'app-select-category',
   standalone: true,
-  imports: [FormsModule, TranslocoDirective, LabelDirective],
+  imports: [FormsModule, TranslocoDirective, LabelDirective, NgIcon],
   templateUrl: './select-category.component.html',
   styleUrl: './select-category.component.scss',
+  providers: provideIcons({ heroChevronDown }),
 })
 export class SelectCategoryComponent {
   @Input() categories: Category[] = [];

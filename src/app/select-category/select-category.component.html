@@ -1,13 +1,18 @@
 <ng-container *transloco="let t">
   <label appLabel for="category">{{ t('category') }}</label>
-  <select
-    class="w-full rounded-md border border-gray-300 px-2 py-2 shadow-sm focus:border-indigo-600 focus:ring-indigo-500 sm:text-sm"
-    id="category"
-    [(ngModel)]="categoryId"
-    (ngModelChange)="categoryIdChange.emit($event)">
-    <option [ngValue]="null">{{ t('selectCategory') }}</option>
-    @for (category of categories; track category.id) {
-      <option [ngValue]="category.id">{{ category.title }}</option>
-    }
-  </select>
+  <div class="grid">
+    <ng-icon
+      name="heroChevronDown"
+      class="pointer-events-none relative right-2 z-10 col-start-1 row-start-1 self-center justify-self-end"></ng-icon>
+    <select
+      class="col-start-1 row-start-1 w-full appearance-none rounded-md border border-gray-300 py-2 pe-7 ps-2 shadow-sm focus:border-indigo-600 focus:ring-indigo-500"
+      id="category"
+      [(ngModel)]="categoryId"
+      (ngModelChange)="categoryIdChange.emit($event)">
+      <option [ngValue]="null">{{ t('selectCategory') }}</option>
+      @for (category of categories; track category.id) {
+        <option [ngValue]="category.id">{{ category.title }}</option>
+      }
+    </select>
+  </div>
 </ng-container>
