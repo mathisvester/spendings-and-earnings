@@ -28,7 +28,7 @@
       [monthNames]="monthNames"
       (filterChange)="filterTransactions($event)"></app-filter>
     <app-transaction-list
-      [transactions]="transactionStore.filteredTransactions()"
+      [transactions]="transactionStore.transactions()"
       [categories]="categories()"
       [filter]="transactionStore.filter()"
       (deleteTransaction)="deleteTransaction($event)"

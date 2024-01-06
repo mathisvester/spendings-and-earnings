@@ -54,6 +54,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.categoryService.load();
+    this.transactionStore.load();
   }
 
   deleteTransaction(transactionId: number) {
