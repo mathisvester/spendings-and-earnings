@@ -18,19 +18,19 @@
     </div>
     <h2 appHeadline class="mb-3">{{ t('overview') }}</h2>
     <app-transaction-summary
-      [totalEarnings]="totalEarnings()"
-      [totalSpendings]="totalSpendings()">
+      [totalEarnings]="transactionStore.totalEarnings()"
+      [totalSpendings]="transactionStore.totalSpendings()">
     </app-transaction-summary>
     <app-filter
       class="mb-5 block"
       [categories]="categories()"
-      [filter]="filter()"
+      [filter]="transactionStore.filter()"
       [monthNames]="monthNames"
       (filterChange)="filterTransactions($event)"></app-filter>
     <app-transaction-list
-      [transactions]="transactions()"
+      [transactions]="transactionStore.transactions()"
       [categories]="categories()"
-      [filter]="filter()"
+      [filter]="transactionStore.filter()"
       (deleteTransaction)="deleteTransaction($event)"
       (updateTransaction)="updateTransaction($event)"></app-transaction-list>
   </app-page>

@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
@@ -32,6 +33,7 @@ import { TransactionInterval } from '../transaction-interval';
   ],
   templateUrl: './transaction-form.component.html',
   styleUrl: './transaction-form.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TransactionFormComponent {
   @ViewChild('f') form!: NgForm;
