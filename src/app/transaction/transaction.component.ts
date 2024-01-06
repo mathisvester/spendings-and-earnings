@@ -24,6 +24,7 @@ import { TranslocoDirective, TranslocoService } from '@ngneat/transloco';
 import { PageComponent } from '../page/page.component';
 import { LanguageService } from '../language.service';
 import { TransactionStore } from '../transaction.store';
+import { ButtonDirective } from '../button.directive';
 
 @Component({
   selector: 'app-transaction',
@@ -36,6 +37,7 @@ import { TransactionStore } from '../transaction.store';
     TransactionFormComponent,
     TranslocoDirective,
     PageComponent,
+    ButtonDirective,
   ],
   templateUrl: './transaction.component.html',
   styleUrl: './transaction.component.scss',
@@ -91,6 +93,12 @@ export class TransactionComponent implements OnDestroy {
     this.currencySymbol = this.languageService.currencySymbol;
   }
 
+  ngOnDestroy() {
+    if (this.transaction()) {
+      this.transactionStore.deselect();
+    }
+  }
+
   saveTransaction(transaction: NewTransaction | Transaction) {
     if (isTransaction(transaction)) {
       this.transactionStore.update({
@@ -105,9 +113,11 @@ export class TransactionComponent implements OnDestroy {
     }
   }
 
-  ngOnDestroy() {
-    if (this.transaction()) {
-      this.transactionStore.deselect();
+  deleteTransaction() {
+    const transactionId = this.transaction()?.id;
+
+    if (!!transactionId) {
+      this.transactionStore.delete({ transactionId, forward: '/' });
     }
   }
 }

@@ -7,9 +7,7 @@ import {
 } from '@angular/core';
 import { Transaction } from '../transaction';
 import { Category } from '../category';
-import { ButtonDirective } from '../button.directive';
 import { CurrencyPipe, DatePipe, LowerCasePipe } from '@angular/common';
-import { NgIcon } from '@ng-icons/core';
 import { TranslocoDirective, TranslocoPipe } from '@ngneat/transloco';
 import { Filter } from '../filter';
 import { defaultFilter } from '../default-filter';
@@ -19,11 +17,9 @@ import { lastDayOfMonth, validateDayOfMonth } from '../day-of-month';
   selector: 'app-transaction-list-item',
   standalone: true,
   imports: [
-    ButtonDirective,
     CurrencyPipe,
     DatePipe,
     LowerCasePipe,
-    NgIcon,
     TranslocoPipe,
     TranslocoDirective,
   ],
@@ -35,7 +31,6 @@ export class TransactionListItemComponent {
   @Input({ required: true }) transaction!: Transaction;
   @Input({ required: true }) categories!: Category[];
   @Input() filter: Filter = defaultFilter();
-  @Output() deleteTransaction = new EventEmitter<number>();
   @Output() updateTransaction = new EventEmitter<number>();
 
   get category(): Category | undefined {

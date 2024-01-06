@@ -1,5 +1,7 @@
 <ng-container *transloco="let t">
-  <li class="grid grid-cols-[1fr_auto_auto] items-center gap-3 px-3 py-3.5">
+  <li
+    class="grid cursor-pointer grid-cols-[1fr_auto_auto] items-center gap-3 px-3 py-3.5"
+    (click)="updateTransaction.emit(transaction.id)">
     <div>
       <p class="mb-1 text-xs text-gray-500">
         {{ date | date: 'shortDate' }}
@@ -10,7 +12,7 @@
           &#x2022; {{ category.title }}
         }
       </p>
-      <p class="font-semibold text-gray-900">
+      <p class="font-medium text-gray-900">
         {{ transaction.description ?? '-' }}
       </p>
     </div>
@@ -20,19 +22,6 @@
       } @else {
         <span class="text-green-600">{{ transaction.amount | currency }}</span>
       }
-    </div>
-    <div>
-      <button
-        appButton
-        (click)="deleteTransaction.emit(transaction.id)"
-        [attr.aria-label]="t('delete')">
-        <ng-icon name="heroTrash"></ng-icon></button
-      ><button
-        appButton
-        (click)="updateTransaction.emit(transaction.id)"
-        [attr.aria-label]="t('update')">
-        <ng-icon name="heroPencilSquare"></ng-icon>
-      </button>
     </div>
   </li>
 </ng-container>

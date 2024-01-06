@@ -104,17 +104,21 @@ export class TransactionStore {
     )
   );
 
-  delete = rxMethod<number>(
+  delete = rxMethod<{ transactionId: number; forward?: string }>(
     pipe(
-      exhaustMap(transactionId =>
+      exhaustMap(({ transactionId, forward }) =>
         this.transactionService.delete(transactionId).pipe(
-          tap(() =>
+          tap(() => {
             patchState(transactionState, state => ({
               transactions: state.transactions.filter(
                 transaction => transaction.id !== transactionId
               ),
-            }))
-          )
+            }));
+
+            if (!!forward) {
+              this.router.navigate([forward]);
+            }
+          })
         )
       )
     )

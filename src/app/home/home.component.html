@@ -31,7 +31,6 @@
       [transactions]="transactionStore.transactions()"
       [categories]="categories()"
       [filter]="transactionStore.filter()"
-      (deleteTransaction)="deleteTransaction($event)"
       (updateTransaction)="updateTransaction($event)"></app-transaction-list>
   </app-page>
 </ng-container>

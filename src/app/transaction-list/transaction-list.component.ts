@@ -20,6 +20,5 @@ export class TransactionListComponent {
   @Input({ required: true }) transactions!: Transaction[];
   @Input({ required: true }) categories!: Category[];
   @Input() filter: Filter = defaultFilter();
-  @Output() deleteTransaction = new EventEmitter<number>();
   @Output() updateTransaction = new EventEmitter<number>();
 }

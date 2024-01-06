@@ -57,10 +57,6 @@ export class HomeComponent implements OnInit {
     this.transactionStore.load();
   }
 
-  deleteTransaction(transactionId: number) {
-    this.transactionStore.delete(transactionId);
-  }
-
   updateTransaction(transactionId: number) {
     this.router.navigateByUrl(`/update-transaction/${transactionId}`);
   }

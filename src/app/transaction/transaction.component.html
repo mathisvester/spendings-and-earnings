@@ -6,5 +6,10 @@
       [categories]="categories()"
       [currencySymbol]="currencySymbol"
       (saveTransaction)="saveTransaction($event)"></app-transaction-form>
+    @if (transaction()) {
+      <button appButton class="mt-3 w-full" (click)="deleteTransaction()">
+        {{ t('delete') }}
+      </button>
+    }
   </app-page>
 </ng-container>
