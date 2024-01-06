@@ -1,12 +1,13 @@
 <ng-container *transloco="let t">
   @if (filter) {
     <form>
-      <div class="grid grid-cols-2 gap-4">
+      <div class="grid auto-cols-auto grid-flow-col gap-3">
         <fieldset>
           <app-select-category
             [(categoryId)]="filter.categoryId"
             (categoryIdChange)="submit()"
-            [categories]="categories"></app-select-category>
+            [categories]="categories"
+            [defaultOptionLabel]="t('all')"></app-select-category>
         </fieldset>
         <fieldset>
           <legend
@@ -17,11 +18,11 @@
             <div class="flex-grow">
               <div class="grid">
                 <ng-icon
-                  name="heroChevronDown"
+                  name="heroChevronUpDown"
                   class="pointer-events-none relative right-2 z-10 col-start-1 row-start-1 self-center justify-self-end"></ng-icon>
                 <select
                   id="month"
-                  class="col-start-1 row-start-1 w-full appearance-none rounded-md border border-gray-300 bg-white py-2 pe-7 ps-2 shadow-sm focus:border-indigo-600 focus:ring-indigo-500"
+                  class="col-start-1 row-start-1 w-full min-w-24 appearance-none rounded-md border border-gray-300 bg-white py-2 pe-7 ps-2 text-sm leading-6 shadow-sm focus:border-indigo-600 focus:ring-indigo-500"
                   name="month"
                   [(ngModel)]="filter.month"
                   (ngModelChange)="submit()"
@@ -36,11 +37,11 @@
             <div>
               <div class="grid">
                 <ng-icon
-                  name="heroChevronDown"
+                  name="heroChevronUpDown"
                   class="pointer-events-none relative right-2 z-10 col-start-1 row-start-1 self-center justify-self-end"></ng-icon>
                 <select
                   id="year"
-                  class="col-start-1 row-start-1 w-full appearance-none rounded-md border border-gray-300 bg-white py-2 pe-7 ps-2 shadow-sm focus:border-indigo-600 focus:ring-indigo-500"
+                  class="col-start-1 row-start-1 w-full min-w-20 appearance-none rounded-md border border-gray-300 bg-white py-2 pe-7 ps-2 text-sm leading-6 shadow-sm focus:border-indigo-600 focus:ring-indigo-500"
                   name="year"
                   [(ngModel)]="filter.year"
                   (ngModelChange)="submit()"

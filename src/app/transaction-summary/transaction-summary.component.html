@@ -1,12 +1,12 @@
 <ng-container *transloco="let t">
   <div
-    class="mb-6 rounded-md border border-gray-200 bg-white px-4 py-3.5 shadow-sm">
-    <div class="grid grid-cols-2 gap-4">
+    class="mb-6 rounded-md border border-gray-200 bg-white px-3 py-3.5 shadow-sm">
+    <div class="grid grid-cols-3 gap-3">
       <div>
         <span class="mb-1 block text-xs text-gray-500">{{
           t('earnings')
         }}</span>
-        <span class="block text-xl font-medium text-green-600">{{
+        <span class="block text-lg font-medium text-green-600">{{
           totalEarnings | currency
         }}</span>
       </div>
@@ -14,9 +14,15 @@
         <span class="mb-1 block text-xs text-gray-500">{{
           t('spendings')
         }}</span>
-        <span class="block text-xl font-medium text-red-600"
+        <span class="block text-lg font-medium text-red-600"
           >-{{ totalSpendings | currency }}</span
         >
+      </div>
+      <div>
+        <span class="mb-1 block text-xs text-gray-500">{{ t('sum') }}</span>
+        <span class="block text-lg font-medium">{{
+          totalEarnings - totalSpendings | currency
+        }}</span>
       </div>
     </div>
   </div>

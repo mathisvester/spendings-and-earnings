@@ -6,7 +6,7 @@ import { DecimalPipe } from '@angular/common';
 import { Filter } from '../filter';
 import { TranslocoDirective } from '@ngneat/transloco';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { heroChevronDown } from '@ng-icons/heroicons/outline';
+import { heroChevronUpDown } from '@ng-icons/heroicons/outline';
 
 @Component({
   selector: 'app-filter',
@@ -20,7 +20,7 @@ import { heroChevronDown } from '@ng-icons/heroicons/outline';
   ],
   templateUrl: './filter.component.html',
   styleUrl: './filter.component.scss',
-  providers: provideIcons({ heroChevronDown }),
+  providers: provideIcons({ heroChevronUpDown }),
 })
 export class FilterComponent {
   @Input() categories: Category[] = [];

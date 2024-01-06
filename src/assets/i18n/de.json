@@ -31,5 +31,7 @@
   "newCategory": "Neue Kategorie",
   "updateEarning": "Einnahme aktualisieren",
   "updateSpending": "Ausgabe aktualisieren",
-  "dateHint": "Wenn als Intervall monatlich oder jährlich ausgewählt ist, werden Schaltjahre oder Tage die in anderen Monaten nicht vorkommen, automatisch auf den letzten Tag des Monats angepasst."
+  "dateHint": "Wenn als Intervall monatlich oder jährlich ausgewählt ist, werden Schaltjahre oder Tage die in anderen Monaten nicht vorkommen, automatisch auf den letzten Tag des Monats angepasst.",
+  "sum": "Summe",
+  "all": "Alle"
 }
