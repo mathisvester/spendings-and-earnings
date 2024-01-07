@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   EventEmitter,
@@ -28,6 +29,7 @@ import { ButtonDirective } from '../button.directive';
   ],
   templateUrl: './category.component.html',
   styleUrl: './category.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CategoryComponent {
   @ViewChild('inputTitle') inputTitle!: ElementRef;

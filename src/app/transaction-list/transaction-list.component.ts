@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { Transaction } from '../transaction';
 import { TranslocoDirective } from '@ngneat/transloco';
 import { provideIcons } from '@ng-icons/core';
@@ -14,6 +20,7 @@ import { defaultFilter } from '../default-filter';
   imports: [TranslocoDirective, TransactionListItemComponent],
   templateUrl: './transaction-list.component.html',
   styleUrl: './transaction-list.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: provideIcons({ heroTrash, heroPencilSquare }),
 })
 export class TransactionListComponent {

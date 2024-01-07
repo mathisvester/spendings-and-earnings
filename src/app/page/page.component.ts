@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { TranslocoDirective } from '@ngneat/transloco';
 import { RouterLink } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
@@ -11,6 +11,7 @@ import { ButtonDirective } from '../button.directive';
   imports: [TranslocoDirective, NgIcon, RouterLink, ButtonDirective],
   templateUrl: './page.component.html',
   styleUrl: './page.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: provideIcons({ heroArrowLeft, heroCog6Tooth }),
 })
 export class PageComponent {

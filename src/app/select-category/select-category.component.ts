@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { Category } from '../category';
 import { FormsModule } from '@angular/forms';
 import { TranslocoDirective } from '@ngneat/transloco';
@@ -12,6 +18,7 @@ import { heroChevronUpDown } from '@ng-icons/heroicons/outline';
   imports: [FormsModule, TranslocoDirective, LabelDirective, NgIcon],
   templateUrl: './select-category.component.html',
   styleUrl: './select-category.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: provideIcons({ heroChevronUpDown }),
 })
 export class SelectCategoryComponent {

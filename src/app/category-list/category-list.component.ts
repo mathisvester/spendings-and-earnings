@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { Category } from '../category';
 import { TranslocoDirective } from '@ngneat/transloco';
 import { NgIcon, provideIcons } from '@ng-icons/core';
@@ -11,6 +17,7 @@ import { ButtonDirective } from '../button.directive';
   imports: [TranslocoDirective, NgIcon, ButtonDirective],
   templateUrl: './category-list.component.html',
   styleUrl: './category-list.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: provideIcons({ heroTrash, heroPencilSquare }),
 })
 export class CategoryListComponent {

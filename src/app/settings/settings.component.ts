@@ -1,4 +1,11 @@
-import { Component, inject, OnDestroy, OnInit, Signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnDestroy,
+  OnInit,
+  Signal,
+} from '@angular/core';
 import { CategoryListComponent } from '../category-list/category-list.component';
 import { CategoryComponent } from '../category/category.component';
 import { NewCategory } from '../new-category';
@@ -19,6 +26,7 @@ import { PageComponent } from '../page/page.component';
   ],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SettingsComponent implements OnInit, OnDestroy {
   readonly categories: Signal<Category[]>;

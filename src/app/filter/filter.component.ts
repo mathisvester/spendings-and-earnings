@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { Category } from '../category';
 import { SelectCategoryComponent } from '../select-category/select-category.component';
 import { FormsModule } from '@angular/forms';
@@ -20,6 +26,7 @@ import { heroChevronUpDown } from '@ng-icons/heroicons/outline';
   ],
   templateUrl: './filter.component.html',
   styleUrl: './filter.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: provideIcons({ heroChevronUpDown }),
 })
 export class FilterComponent {
