@@ -8,4 +8,6 @@ export interface NewTransaction {
   description?: string;
   categoryId: number | null;
   interval: TransactionInterval;
+  start?: Date;
+  end?: Date;
 }

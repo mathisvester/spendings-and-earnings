@@ -53,6 +53,35 @@
       }
     </fieldset>
 
+    @if (interval === 'MONTHLY' || interval === 'YEARLY') {
+      <fieldset class="mb-5">
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label appLabel for="start">{{ t('start') }}</label>
+            <input
+              appInput
+              type="date"
+              [placeholder]="t('start')"
+              id="start"
+              name="start"
+              [(ngModel)]="start"
+              useValueAsLocalDate />
+          </div>
+          <div>
+            <label appLabel for="end">{{ t('end') }}</label>
+            <input
+              appInput
+              type="date"
+              [placeholder]="t('end')"
+              id="end"
+              name="end"
+              [(ngModel)]="end"
+              useValueAsLocalDate />
+          </div>
+        </div>
+      </fieldset>
+    }
+
     <fieldset class="mb-5">
       <label appLabel for="amount">{{ t('amount') }}</label>
       <div class="relative mt-2 rounded-md shadow-sm">

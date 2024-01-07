@@ -7,11 +7,16 @@ export function filterTransactions(
 ): Transaction[] {
   return transactions.filter(t => {
     if (filter.categoryId === null) {
-      return createdAtFilter(t, filter) && dateFilter(t, filter);
+      return (
+        createdAtFilter(t, filter) &&
+        dateFilter(t, filter) &&
+        startEndFilter(t, filter)
+      );
     } else {
       return (
         createdAtFilter(t, filter) &&
         dateFilter(t, filter) &&
+        startEndFilter(t, filter) &&
         t.categoryId === filter.categoryId
       );
     }
@@ -37,4 +42,17 @@ function createdAtFilter(t: Transaction, filter: Filter): boolean {
     t.createdAt.getMonth() <= filter.month &&
     t.createdAt.getFullYear() <= filter.year
   );
+}
+
+function startEndFilter(t: Transaction, filter: Filter): boolean {
+  if (!!t.start && !!t.end) {
+    return (
+      t.start.getMonth() <= filter.month &&
+      t.start.getFullYear() <= filter.year &&
+      t.end.getMonth() >= filter.month &&
+      t.end.getFullYear() >= filter.year
+    );
+  } else {
+    return true;
+  }
 }

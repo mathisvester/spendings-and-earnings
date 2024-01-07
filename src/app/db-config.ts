@@ -29,6 +29,8 @@ export const dbConfig: DBConfig = {
           options: { unique: false },
         },
         { name: 'interval', keypath: 'interval', options: { unique: false } },
+        { name: 'start', keypath: 'start', options: { unique: false } },
+        { name: 'end', keypath: 'end', options: { unique: false } },
       ],
     },
     {

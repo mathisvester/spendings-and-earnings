@@ -18,6 +18,7 @@ import { InputDirective } from '../input.directive';
 import { LabelDirective } from '../label.directive';
 import { ButtonDirective } from '../button.directive';
 import { TransactionInterval } from '../transaction-interval';
+import { DatePipe, JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-transaction-form',
@@ -30,6 +31,8 @@ import { TransactionInterval } from '../transaction-interval';
     InputDirective,
     LabelDirective,
     ButtonDirective,
+    JsonPipe,
+    DatePipe,
   ],
   templateUrl: './transaction-form.component.html',
   styleUrl: './transaction-form.component.scss',
@@ -59,6 +62,8 @@ export class TransactionFormComponent {
   description = '';
   categoryId: number | null = null;
   interval: TransactionInterval = 'ONE_TIME';
+  start: Date | null = null;
+  end: Date | null = null;
 
   private _transaction: Transaction | null = null;
 
@@ -72,10 +77,18 @@ export class TransactionFormComponent {
         description: this.description,
         categoryId: this.categoryId,
         interval: this.interval,
+        ...(this.start && { start: this.start }),
+        ...(this.end && { end: this.end }),
       };
 
       if (!this.description) {
         delete transaction.description;
+      }
+      if (!this.start) {
+        delete transaction.start;
+      }
+      if (!this.end) {
+        delete transaction.end;
       }
 
       this.saveTransaction.emit(transaction);
@@ -91,6 +104,12 @@ export class TransactionFormComponent {
     }
     if (!!transaction.categoryId) {
       this.categoryId = transaction.categoryId;
+    }
+    if (!!transaction.start) {
+      this.start = transaction.start;
+    }
+    if (!!transaction.end) {
+      this.end = transaction.end;
     }
     this.interval = transaction.interval;
   }
